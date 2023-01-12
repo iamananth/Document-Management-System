@@ -37,6 +37,7 @@ public class ProjectServlet extends HttpServlet {
 		    boolean st = false;
 			try {
 				st = dao.uploadFile(userid, projectCode, start, end, projectType);
+				
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -44,7 +45,7 @@ public class ProjectServlet extends HttpServlet {
 		    if(st){
 		    	String message = "Updated Successfully";
 		    	request.setAttribute("message", message);
-		    	response.sendRedirect("result.jsp");
+		    	response.sendRedirect("FileUpload.jsp");
 		    }
 		}	
 }

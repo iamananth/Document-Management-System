@@ -43,7 +43,7 @@
 		<div class="alert alert-success" style="margin-right: 251px;" role="alert">
 			Welcome, <c:out value="${user.username}" />
 		</div>
-		<form action="UserLogout" method="post"><button class="btn btn-warning" style="margin-left: 937px; margin-top: -62px;">Logout</button></form>
+		<form action="UserLogout" method="post"><button class="btn btn-danger" style="margin-left: 937px; margin-top: -62px;">Logout</button></form>
 		<div class="card">
   			<h5 class="card-header">Featured</h5>
   			<div class="card-body">
@@ -53,12 +53,12 @@
   			</div>
 		</div><br>
 		<div class="card">
-  			<h5 class="card-header">Document Upload</h5>
   			<div class="card-body">
+    			<h5 class="card-title">Project Document Upload</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
     			<a href="FileUpload.jsp" class="btn btn-primary">Upload</a>
   			</div>
-		</div>
+		</div><br>
 	</div>
 </body>
 </html>

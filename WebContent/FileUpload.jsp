@@ -12,33 +12,20 @@
 <body>
 	<h1 class="text-bg-primary p-3">Document Management System</h1>
 	<div class="container-lg">
-	<h4>Project Details</h4>
-	<form action="ProjectServlet" method="post">
+	<h4>Project Document Upload</h4>
+	<form action="FileUploadServlet" method="post" enctype="multipart/form-data"> 
   		<div class="row mb-4">
     		<div class="col">
       			<div class="form-outline">
-      			<input type="hidden" name="uid" id="uid" value="${user.id}"/>
       				<label class="form-label" for="pcode">Project Code</label>
        				<input type="text" name="pcode" id="pcode" class="form-control" />
       			</div>
     	   </div>
   		</div>
-  		<div class="col">
-      		<div class="form-outline">
-      			<label class="form-label" for="pstart">Project Start Date</label>
-        		<input type="date" name="pstart" id="pstart" class="form-control" />
-      		</div><br>
-      		<div class="form-outline">
-      			<label class="form-label" for="pend">Project End Date</label>
-    			<input type="date" name="pend" id="pend" class="form-control" /><br>
-  			</div>
-    	</div>
-  		<div class="form-outline mb-4">
-  			<label class="form-label" for="ptype">Project Type</label>
-    		<input type="text" name="ptype" id="ptype" class="form-control" />
-    	</div>
-    	<button type="reset" class="btn btn-secondary btn-block mb-4">Reset</button>
-  		<button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+  		
+    		<label for="formFile" class="form-label">Upload Documents</label>
+			<input class="form-control" name="fileName" type="file" id="formFile" /><br>
+    	<button type="submit" class="btn btn-primary btn-block mb-4">Upload</button>
     	</form>
 	</div>
 	<script src="js/script.js"></script>
