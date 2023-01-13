@@ -1,6 +1,8 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,24 +26,26 @@ public class UserRegister extends HttpServlet {
 		String ph = request.getParameter("ph");
 		String pass = request.getParameter("password");
 		
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		byte[] hash = md.digest(pass.getBytes());
+		String hashedPassword = new String(hash, "UTF-8");
+		
 		User u = new User();
 		u.setUsername(name);
 		u.setDepartment(dept);
 		u.setPhone_number(ph);
-		u.setPassword(pass);
+		u.setPassword(hashedPassword);
 		
-		RegisterDao dao = new RegisterDao();
-//		boolean st = dao.insert(name, pass, dept, ph);
+		RegisterDao dao = new RegisterDao();		
+		dao.register(u);
+		response.sendRedirect("UserLogin.jsp");
 		
-		int i = dao.register(u);
-		
-//		if(st){
-//			response.sendRedirect("UserLogin.jsp");
-//		}
-		
-		if(i > 0){
-			response.sendRedirect("UserLogin.jsp");
-		}
 	}
 
 }

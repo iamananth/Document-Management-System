@@ -1,9 +1,5 @@
 package com.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.security.MessageDigest;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -44,22 +40,27 @@ public class RegisterDao {
 //		return status;
 //	}
 	
-	public int register(User u){    
-		 int i=0;    
-		  
-		 StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
-		 Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
+	public void register(User u){        
+		
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
 		  
 		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
 		Session session = factory.openSession();  
-		Transaction t = session.beginTransaction();   
-		  
-		i=(Integer)session.save(u);    
-		  
-		t.commit();    
-		session.close();    
-		    
-		return i;    
+		Transaction t = session.beginTransaction();  
+		
+		try{
+			session.save(u);
+		}catch (Exception e) {
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+        	t.commit();
+            session.close();
+        }   
+		        
 		   
 		 }    
 }

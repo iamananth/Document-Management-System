@@ -12,7 +12,8 @@
         <property name="connection.username">hr</property>  
         <property name="connection.password">root</property>  
         <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>  
-    <mapping resource="user.hbm.xml"/>  
+    <mapping resource="user.hbm.xml"/>
+    <mapping resource="projectdetails.hbm.xml"/> 
     </session-factory>  
   
 </hibernate-configuration>  

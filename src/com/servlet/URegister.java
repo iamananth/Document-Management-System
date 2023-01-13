@@ -3,13 +3,12 @@ package com.servlet;
 import java.io.*;
 
 import javax.servlet.*;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.RegisterDao;
+import com.pojo.User;
 
 /**
  * Servlet implementation class URegister
@@ -30,13 +29,16 @@ public class URegister extends HttpServlet {
         String dept = request.getParameter("dept");
         String ph = request.getParameter("ph");
         
-        RegisterDao dao = new RegisterDao();
-        boolean st = dao.insert(uname, pass, dept, ph);
+        User u = new User();
+        u.setUsername(uname);
+        u.setPassword(pass);
+        u.setDepartment(dept);
+        u.setPhone_number(ph);
         
-        if(st){
-        	RequestDispatcher rs = request.getRequestDispatcher("UserManage.jsp");
-            rs.forward(request, response);
-        }
+        RegisterDao dao = new RegisterDao();
+        dao.register(u);
+        RequestDispatcher rs = request.getRequestDispatcher("UserManage.jsp");
+        rs.forward(request, response);
 	}
 
 }

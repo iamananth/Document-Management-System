@@ -74,7 +74,7 @@ public class FileUploadServlet extends HttpServlet {
 	            if(st){
 	            	String message = "Uploaded Successfully";
 			    	request.setAttribute("message", message);
-			    	response.sendRedirect("result.jsp");
+			    	response.sendRedirect("UserDashboard.jsp");;
 	            }
 	            
 	        } catch (Exception e) {
