@@ -100,4 +100,22 @@
     <servlet-name>FileUploadServlet</servlet-name>
     <url-pattern>/FileUploadServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewProjectUser</display-name>
+    <servlet-name>ViewProjectUser</servlet-name>
+    <servlet-class>com.servlet.ViewProjectUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewProjectUser</servlet-name>
+    <url-pattern>/ViewProjectUser</url-pattern>
+  </servlet-mapping>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/error.jsp</location>
+  </error-page>
+    <error-page>
+    <error-code>404</error-code>
+    <location>/error.jsp</location>
+  </error-page>
 </web-app>

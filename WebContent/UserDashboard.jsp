@@ -59,6 +59,13 @@
     			<a href="FileUpload.jsp" class="btn btn-primary">Upload</a>
   			</div>
 		</div><br>
+		<div class="card">
+  			<div class="card-body">
+    			<h5 class="card-title">View Projects</h5>
+    			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
+    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+  			</div>
+		</div><br>
 	</div>
 </body>
 </html>

@@ -12,6 +12,7 @@
       <property name = "startDate" column = "p_start" type = "string"/>
       <property name = "endDate" column = "p_end" type = "string"/>
       <property name = "ptype" column = "p_type" type = "string"/>
+      <property name = "fileName" column = "file_name" type = "string"/>
       
       <many-to-one name="user" class="com.pojo.User">
 			<column name="user_id" not-null="true"></column>

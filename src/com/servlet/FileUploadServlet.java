@@ -69,8 +69,6 @@ public class FileUploadServlet extends HttpServlet {
 	            String pcode = FilenameUtils.removeExtension(fileName);
 	            FileUploadDao dao = new FileUploadDao();
 	            st = dao.FileUp(pcode, fileName);
-	            System.out.println(fileName);
-	            System.out.println(pcode);
 	            if(st){
 	            	String message = "Uploaded Successfully";
 			    	request.setAttribute("message", message);

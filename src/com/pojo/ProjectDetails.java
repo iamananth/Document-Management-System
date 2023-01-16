@@ -44,7 +44,4 @@ public class ProjectDetails {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
-	
 }
