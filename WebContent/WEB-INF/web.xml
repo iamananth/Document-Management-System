@@ -114,8 +114,28 @@
     <error-code>500</error-code>
     <location>/error.jsp</location>
   </error-page>
-    <error-page>
+  <error-page>
     <error-code>404</error-code>
     <location>/error.jsp</location>
   </error-page>
+  <servlet>
+    <description></description>
+    <display-name>DownloadServlet</display-name>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>com.servlet.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/DownloadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewPdfServlet</display-name>
+    <servlet-name>ViewPdfServlet</servlet-name>
+    <servlet-class>com.servlet.ViewPdfServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewPdfServlet</servlet-name>
+    <url-pattern>/ViewPdfServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

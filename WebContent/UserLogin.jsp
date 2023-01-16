@@ -49,6 +49,7 @@
 			<br>
 			<label>Enter your Password</label>
 			<input class="form-control form-control-sm" type="password" name="password" id="pass" placeholder="Enter password" >
+			<input type="checkbox" onclick="showPass()"> Show Password
 			<br>
 			<div class="text-center">
 			<a href="ForgotPassword.jsp">Forgot Password?</a>

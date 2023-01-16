@@ -37,6 +37,7 @@
       <th scope="col">End Date</th>
       <th scope="col">Project Type</th>
       <th scope="col">File Name</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -47,6 +48,10 @@
       <td>${row.endDate}</td>
       <td>${row.ptype}</td>
       <td>${row.fileName}</td>
+      <td>
+      <form action="DownloadServlet" method="get"><input type="hidden" name="fname" value="${row.fileName}" /><button type="submit" class="btn btn-info">Download</button></form><br>
+      <form action="ViewPdfServlet" method="get"><input type="hidden" value="${row.fileName}" /><button type="submit" class="btn btn-warning" style="margin-left: 104px; margin-top: -117px;">View</button></form>
+      </td>
     </tr>
     </c:forEach>
   </tbody>
