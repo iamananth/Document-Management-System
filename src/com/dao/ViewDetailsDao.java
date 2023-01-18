@@ -1,15 +1,6 @@
 package com.dao;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-
-
-
-
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,8 +17,6 @@ import com.pojo.ProjectDetails;
 public class ViewDetailsDao {
 	
 	public List<ProjectDetails> getProjectDetails(int user_id){
-		
-		
 		
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  

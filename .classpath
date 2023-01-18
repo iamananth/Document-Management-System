@@ -16,5 +16,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/anant/Documents/jboss-4.2.2.GA/lib/log4j-boot.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

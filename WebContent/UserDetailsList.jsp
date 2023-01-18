@@ -20,12 +20,15 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"
 	type="text/javascript"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 	type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 	<h1 class="text-bg-primary p-3">Document Management System</h1>
@@ -38,7 +41,7 @@
 					</div>
 				</div>
 			</div>
-			<table class="table table-bordered">
+			<table id="example" class="table table-striped" style="width:100%">
 				<thead>
 					<tr>
 						<th>ID</th>

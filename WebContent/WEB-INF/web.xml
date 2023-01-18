@@ -138,4 +138,21 @@
     <servlet-name>ViewPdfServlet</servlet-name>
     <url-pattern>/ViewPdfServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HeartbeatTimeoutServlet</display-name>
+    <servlet-name>HeartbeatTimeoutServlet</servlet-name>
+    <servlet-class>com.servlet.HeartbeatTimeoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HeartbeatTimeoutServlet</servlet-name>
+    <url-pattern>/HeartbeatTimeoutServlet</url-pattern>
+  </servlet-mapping>
+  <session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
+	<error-page>
+    	<exception-type>java.lang.Exception</exception-type>
+    	<location>/errorpages/exception.html</location>
+	</error-page>
 </web-app>

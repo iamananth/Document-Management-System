@@ -2,8 +2,6 @@ package com.servlet;
 
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.ParseException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,14 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-
-
-
-
-
 import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 
 import com.dao.ProjectDao;
 import com.pojo.ProjectDetails;
@@ -29,19 +22,19 @@ import com.pojo.User;
 
 public class ProjectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+	static final Logger logger = Logger.getLogger(ProjectServlet.class);
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-			int userid = Integer.parseInt(request.getParameter("uid"));
+//			int userid = Integer.parseInt(request.getParameter("uid"));
 			String projectCode = request.getParameter("pcode");
 			String startDate = request.getParameter("pstart");
 			String endDate = request.getParameter("pend");
 			String projectType = request.getParameter("ptype");
 			
 			
-			Date start = Date.valueOf(startDate);
-			Date end = Date.valueOf(endDate);
+//			Date start = Date.valueOf(startDate);
+//			Date end = Date.valueOf(endDate);
 			
 //			User u = new User(userid);
 			HttpSession session = request.getSession();
@@ -61,6 +54,7 @@ public class ProjectServlet extends HttpServlet {
 			
 			ProjectDao dao = new ProjectDao();
 		    dao.inProject(p,u);
+		    logger.info("User " + u.getUsername() + " saved project details successfully.");
 		    	String message = "Updated Successfully";
 		    	request.setAttribute("message", message);
 		    	response.sendRedirect("FileUpload.jsp");

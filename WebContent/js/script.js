@@ -54,3 +54,9 @@ function showPass() {
 	    x.type = "password";
 	  }
 	} 
+
+$(document).ready( function () {
+    $('#example').DataTable( {
+    	paging: true
+    });
+} );

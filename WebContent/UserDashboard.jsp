@@ -12,19 +12,14 @@
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-<link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-	type="text/javascript"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-	type="text/javascript"></script>
+	<script src="js/Heartbeat.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            startHeartbeat();
+        });
+    </script>
 </head>
 <body>
 	<%
@@ -38,18 +33,40 @@
 
 			}
 	%>
-	<h1 class="text-bg-primary p-3">Document Management System</h1>
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="UserDashboard.jsp">DMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="ProjectEntry.jsp">Add Project</a>
+      </li>
+      <li class="nav-item active">
+		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
+      </li>
+      <li class="nav-item active">
+        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 950px;">Logout</button></form>
+      </li>
+    </ul>
+  </div>
+</nav>
 	<div class="container-lg">
-		<div class="alert alert-success" style="margin-right: 251px;" role="alert">
+		<div class="alert alert-success" role="alert">
 			Welcome, <c:out value="${user.username}" />
 		</div>
-		<form action="UserLogout" method="post"><button class="btn btn-danger" style="margin-left: 937px; margin-top: -62px;">Logout</button></form>
+<!-- 		<form action="UserLogout" method="post"><button class="btn btn-danger" style="margin-left: 937px; margin-top: -62px;">Logout</button></form> -->
 		<div class="card">
   			<h5 class="card-header">Featured</h5>
   			<div class="card-body">
-    			<h5 class="card-title">Add Project Details</h5>
+    			<h5 class="card-title">View Projects</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<a href="ProjectEntry.jsp" class="btn btn-primary">Add</a>
+    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
   			</div>
 		</div><br>
 		<div class="card">
@@ -61,9 +78,9 @@
 		</div><br>
 		<div class="card">
   			<div class="card-body">
-    			<h5 class="card-title">View Projects</h5>
+    			<h5 class="card-title">Add Project Details</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+    			<a href="ProjectEntry.jsp" class="btn btn-primary">Add</a>
   			</div>
 		</div><br>
 	</div>

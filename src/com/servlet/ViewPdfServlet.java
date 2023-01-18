@@ -1,10 +1,14 @@
 package com.servlet;
 
-import java.io.FileOutputStream;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,19 +22,22 @@ public class ViewPdfServlet extends HttpServlet {
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
-		
-		response.setContentType("application/pdf");  
-		out = response.getWriter();  
-		
 		String fname = request.getParameter("fname");
-		String path = "C:\\Users\\anant\\workspace\\DMS Project\\WebContent\\projectfiles\\";
-		
-		response.setHeader("Content-Disposition", "inline; filename="+fname+";");  
-		
-		FileOutputStream fileOut = new FileOutputStream(path + fname);  
-		fileOut.close();  
-		out.close(); 
+		String path = "C:/Users/anant/workspace/DMS Project/WebContent/projectfiles/";
+
+	    File pdfFile = new File(path+fname);
+	    response.setContentType("application/pdf");
+	    response.setHeader("Content-Disposition", "inline; filename=" + pdfFile.getName());
+
+	    ServletOutputStream out = response.getOutputStream();
+	    FileInputStream in = new FileInputStream(pdfFile);
+	    byte[] buffer = new byte[4096];
+	    int length;
+	    while ((length = in.read(buffer)) > 0){
+	        out.write(buffer, 0, length);
+	    }
+	    in.close();
+	    out.flush();
 	}
 
 }

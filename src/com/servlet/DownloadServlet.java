@@ -32,7 +32,6 @@ public class DownloadServlet extends HttpServlet {
 		while ((in = inputstream.read()) != -1) {
 			out.write(in);
 		}
-		
 		inputstream.close();
 		out.close();
 	}

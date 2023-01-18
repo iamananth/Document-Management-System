@@ -5,18 +5,19 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 
 import com.dao.FileUploadDao;
+import com.pojo.User;
 
 /**
  * Servlet implementation class FileUploadServlet
@@ -24,6 +25,7 @@ import com.dao.FileUploadDao;
 
 public class FileUploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger logger = Logger.getLogger(FileUploadServlet.class);
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -69,7 +71,11 @@ public class FileUploadServlet extends HttpServlet {
 	            String pcode = FilenameUtils.removeExtension(fileName);
 	            FileUploadDao dao = new FileUploadDao();
 	            st = dao.FileUp(pcode, fileName);
+	        
 	            if(st){
+	            	HttpSession session = request.getSession();
+	  			  	User u = (User) session.getAttribute("user");
+	  			  	logger.info("User " + u.getUsername() + " uploaded documents successfully.");
 	            	String message = "Uploaded Successfully";
 			    	request.setAttribute("message", message);
 			    	response.sendRedirect("UserDashboard.jsp");;
