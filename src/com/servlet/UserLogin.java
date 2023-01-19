@@ -28,7 +28,7 @@ public class UserLogin extends HttpServlet {
 		
 		
 		LoginDao dao = new LoginDao();
-		User user = dao.getUser(userid, password);
+		User user = dao.login(userid, password);
 		
 		if (user != null) {
 			  HttpSession session = request.getSession();
@@ -36,7 +36,6 @@ public class UserLogin extends HttpServlet {
 			  logger.info("User " + user.getUsername() + " logged in successfully.");
 			  response.sendRedirect("UserDashboard.jsp");
 			} else {
-				logger.info("User " + user.getUsername() + "could'nt login due to invalid password or username.");
 			  request.setAttribute("errorMessage", "Invalid username or password");
 			  request.getRequestDispatcher("UserLogin.jsp").forward(request, response);
 			}

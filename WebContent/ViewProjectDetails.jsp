@@ -13,6 +13,13 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="js/Heartbeat.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 </head>
 <body>
 	<%
@@ -49,11 +56,35 @@
     </ul>
   </div>
 </nav>
+<!-- <!-- Modal -->
+<!-- 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" -->
+<!-- 		role="dialog" aria-labelledby="exampleModalCenterTitle" -->
+<!-- 		aria-hidden="true"> -->
+<!-- 		<div class="modal-dialog modal-dialog-centered" role="document"> -->
+<!-- 			<div class="modal-content"> -->
+<!-- 				<div class="modal-header"> -->
+<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+<!-- 						aria-label="Close"> -->
+<!-- 						<span aria-hidden="true">&times;</span> -->
+<!-- 					</button> -->
+<!-- 				</div> -->
+<!-- 				<div class="modal-body"> -->
+<!-- 					Are you sure? This cannot be undone. -->
+<!-- 					<div class="modal-footer"> -->
+<!-- 					<button type="button" class="btn btn-secondary" -->
+<!-- 						data-dismiss="modal">Close</button> -->
+<!-- 					<input type="submit" class="btn btn-danger" value="Delete"/> -->
+<!-- 				</div>				 -->
+<!-- 				</div> -->
+				
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	<div class="container-lg">
-	<h4>Project Details</h4>
+	<h4>Project Details</h4><br>
 <!-- 	<form action="UserLogout" method="post"><button class="btn btn-danger" style="margin-left: 937px; margin-top: -62px;">Logout</button></form> -->
 <!-- 	<a href="UserDashboard.jsp"><button class="btn btn-info" style="margin-left: 868px; margin-top: -111px;">Back</button></a> -->
-	<table class="table table-bordered">
+	<table class="table table-bordered table-sm" id="myTable">
   <thead>
     <tr>
       <th scope="col">Project Code</th>
@@ -73,8 +104,9 @@
       <td>${row.ptype}</td>
       <td>${row.fileName}</td>
       <td>
-      <form action="DownloadServlet" method="get"><input type="hidden" name="fname" value="${row.fileName}" /><button type="submit" class="btn btn-info">Download</button></form><br>
-      <form action="ViewPdfServlet" method="get"><input type="hidden" id="fname" name="fname" value="${row.fileName}" /><button type="submit" class="btn btn-warning" style="margin-left: 104px; margin-top: -117px;">View</button></form>
+      <form action="DownloadServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" name="fname" value="${row.fileName}" /><button type="submit" class="btn btn-info">Download</button></form><br>
+      <form action="ViewPdfServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname" name="fname" value="${row.fileName}" /><button type="submit" class="btn btn-warning" style="margin-left: 104px; margin-top: -59px;">View</button></form>
+      <form action="DeleteProjectServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname" name="fname" value="${row.fileName}" /><input type="hidden" id="pcode" name="pcode" value="${row.pcode}" /><button type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new" style="margin-left: 172px;margin-top: -77px;">Delete</button></form>
       </td>
     </tr>
     </c:forEach>
