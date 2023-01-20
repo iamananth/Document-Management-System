@@ -13,6 +13,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import com.pojo.ProjectDetails;
+
 public class FileUploadDao {
 	public boolean FileUp(String pcode,String fileName) throws ParseException{
 //		Connection con = null;
@@ -55,5 +57,28 @@ public class FileUploadDao {
 		session.close();
 		
 		return status;
+	}
+	public boolean chkFile(String fileName){
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build(); 
+		
+		boolean st;
+		  
+		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+		Session session = factory.openSession();  
+		Transaction t = session.beginTransaction();
+		
+		ProjectDetails p = (ProjectDetails) session.get(ProjectDetails.class, fileName);
+		if (p != null) {
+		    st = true;
+		} else {
+		    st = false;
+		}
+		
+		t.commit();
+		session.close();
+		
+		return st;
+		
 	}
 }

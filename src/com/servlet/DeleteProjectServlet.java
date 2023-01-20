@@ -27,6 +27,7 @@ public class DeleteProjectServlet extends HttpServlet {
 		
 		File file = new File("C:\\Users\\anant\\workspace\\DMS Project\\WebContent\\projectfiles\\" + fileName);
 	    
+		//Deleting the file from the server
 	    boolean st1 = file.delete();
 	    System.out.println(file.getName() +"deleted.");
 	    

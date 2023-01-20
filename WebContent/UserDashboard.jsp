@@ -62,27 +62,44 @@
 		</div>
 <!-- 		<form action="UserLogout" method="post"><button class="btn btn-danger" style="margin-left: 937px; margin-top: -62px;">Logout</button></form> -->
 		<div class="card">
-  			<h5 class="card-header">Featured</h5>
+		<h5 class="card-header">Featured</h5>
   			<div class="card-body">
-    			<h5 class="card-title">View Projects</h5>
+    			<h5 class="card-title">Ongoing Projects</h5>
+    			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
+    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+  			</div>
+  			<div class="card-body">
+    			<h5 class="card-title">Archived Projects</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
     			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
   			</div>
 		</div><br>
 		<div class="card">
   			<div class="card-body">
-    			<h5 class="card-title">Project Document Upload</h5>
+    			<h5 class="card-title">All Projects</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<a href="FileUpload.jsp" class="btn btn-primary">Upload</a>
+    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
   			</div>
 		</div><br>
-		<div class="card">
-  			<div class="card-body">
-    			<h5 class="card-title">Add Project Details</h5>
-    			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<a href="ProjectEntry.jsp" class="btn btn-primary">Add</a>
-  			</div>
-		</div><br>
+<!-- 		<div class="card"> -->
+<!--   			<div class="card-body"> -->
+<!--     			<h5 class="card-title">Project Document Upload</h5> -->
+<%--     			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --%>
+<!--     			<a href="FileUpload.jsp" class="btn btn-primary">Upload</a> -->
+<!--   			</div> -->
+<!-- 		</div><br> -->
+<!-- 		<div class="card"> -->
+<!--   			<div class="card-body"> -->
+<!--     			<h5 class="card-title">Add Project Details</h5> -->
+<%--     			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --%>
+<!--     			<a href="ProjectEntry.jsp" class="btn btn-primary">Add</a> -->
+<!--   			</div> -->
+<!-- 		</div><br> -->
 	</div>
 </body>
+<div class="position-absolute bottom-0 start-50 translate-middle-x">
+<footer>
+  <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
+</footer>
+</div>
 </html>

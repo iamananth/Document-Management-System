@@ -60,3 +60,19 @@ $(document).ready( function () {
     	paging: true
     });
 } );
+
+function selectRow(radio) {
+    var row = radio.parentNode.parentNode;
+    var rows = document.getElementById("myTable").getElementsByTagName("tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].classList.remove("selected");
+    }
+    row.classList.add("selected");
+  }
+
+function downProject(fname) {
+	  var xhr = new XMLHttpRequest();
+	  xhr.open("GET", "DownloadServlet/?fname=" + fname, true);
+	  xhr.send();
+	}

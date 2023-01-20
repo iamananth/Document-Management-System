@@ -55,6 +55,8 @@ public class ProjectServlet extends HttpServlet {
 			ProjectDao dao = new ProjectDao();
 		    dao.inProject(p,u);
 		    logger.info("User " + u.getUsername() + " saved project details successfully.");
+		    FilePick f = new FilePick();
+		    f.start();
 		    	String message = "Updated Successfully";
 		    	request.setAttribute("message", message);
 		    	response.sendRedirect("FileUpload.jsp");

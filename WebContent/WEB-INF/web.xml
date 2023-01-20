@@ -159,4 +159,14 @@
     <servlet-name>DeleteProjectServlet</servlet-name>
     <url-pattern>/DeleteProjectServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditProject</display-name>
+    <servlet-name>EditProject</servlet-name>
+    <servlet-class>com.servlet.EditProject</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditProject</servlet-name>
+    <url-pattern>/EditProject</url-pattern>
+  </servlet-mapping>
 </web-app>

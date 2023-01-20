@@ -9,6 +9,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Project Details</title>
 <link rel="stylesheet" href="css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="js/Heartbeat.js"></script>
@@ -87,32 +91,56 @@ $(document).ready( function () {
 	<table class="table table-bordered table-sm" id="myTable">
   <thead>
     <tr>
+      <th></th>
       <th scope="col">Project Code</th>
       <th scope="col">Start Date</th>
       <th scope="col">End Date</th>
       <th scope="col">Project Type</th>
       <th scope="col">File Name</th>
-      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
   <c:forEach items="${details}" var="row">
     <tr>
-	 <th scope="row">${row.pcode}</th>
-      <td>${row.startDate}</td>
-      <td>${row.endDate}</td>
-      <td>${row.ptype}</td>
-      <td>${row.fileName}</td>
-      <td>
-      <form action="DownloadServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" name="fname" value="${row.fileName}" /><button type="submit" class="btn btn-info">Download</button></form><br>
-      <form action="ViewPdfServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname" name="fname" value="${row.fileName}" /><button type="submit" class="btn btn-warning" style="margin-left: 104px; margin-top: -59px;">View</button></form>
-      <form action="DeleteProjectServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname" name="fname" value="${row.fileName}" /><input type="hidden" id="pcode" name="pcode" value="${row.pcode}" /><button type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new" style="margin-left: 172px;margin-top: -77px;">Delete</button></form>
-      </td>
+    <td><input type="radio" id="radioButton" onclick="selectRow(this)" name="choice" /></td>
+	 <th id="pcode" scope="row">${row.pcode}</th>
+      <td id="pstart">${row.startDate}</td>
+      <td id="pend">${row.endDate}</td>
+      <td id="ptype">${row.ptype}</td>
+      <td id="filename">${row.fileName}</td>
     </tr>
     </c:forEach>
   </tbody>
 </table>
+<form action="DownloadServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname" name="fname" /><button type="submit" class="btn btn-info">Download</button></form><br>
+<form action="ViewPdfServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname1" name="fname" /><button type="submit" class="btn btn-warning" style="margin-left: 107px;margin-top: -59px;">View</button></form>
+<form action="EditProject" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="ppcode1" name="pcode" /><button type="submit" class="btn btn-success" style="margin-left: 177px;margin-top: -77px;">Edit</button></form>
+<form action="DeleteProjectServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname2" name="fname" /><input type="hidden" id="ppcode2" name="pcode"/><button type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new" style="margin-left: 240px;margin-top: -94px;">Delete</button></form>
 </div>
 	<script src="js/script.js"></script>
+	<script type="text/javascript">
+	function selectRow(radio) {
+	    var row = radio.parentNode.parentNode;
+	    var pcode = row.getElementsByTagName("th")[0].innerHTML;
+	    document.getElementById("fname").value = pcode+".pdf";
+	    document.getElementById("fname1").value = pcode+".pdf";
+	    document.getElementById("fname2").value = pcode+".pdf";
+	    document.getElementById("ppcode1").value = pcode;
+	    document.getElementById("ppcode2").value = pcode;
+	    var rows = document.getElementById("myTable").getElementsByTagName("tr");
+	    
+	    for (var i = 0; i < rows.length; i++) {
+	      rows[i].classList.remove("selected");
+	    }
+	    row.classList.add("selected");
+	    
+	    
+	  }
+	</script>
 </body>
+<div class="position-absolute bottom-0 start-50 translate-middle-x">
+<footer>
+  <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
+</footer>
+</div>
 </html>

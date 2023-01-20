@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +30,7 @@
 
 			}
 	%>
-	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
   <a class="navbar-brand" href="#">DMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -52,20 +54,35 @@
   </div>
 </nav>
 	<div class="container-lg">
-	<h4>Project Document Upload</h4>
-	<form action="FileUploadServlet" method="post" enctype="multipart/form-data"> 
+	<h4>Edit Project Details</h4>
+	<form action="EditServlet" method="post">
+	<c:forEach items="${details}" var="row">
   		<div class="row mb-4">
     		<div class="col">
       			<div class="form-outline">
+      			<input type="hidden" name="uid" id="uid" value="${user.id}"/>
       				<label class="form-label" for="pcode">Project Code</label>
-       				<input type="text" name="pcode" id="pcode" class="form-control" />
+       				<input type="text" name="pcode" id="pcode" value="${row.pcode}" class="form-control" />
       			</div>
     	   </div>
   		</div>
-  		
-    		<label for="formFile" class="form-label">Upload Documents</label>
-			<input class="form-control" name="fileName" type="file" id="formFile" /><br>
-    	<button type="submit" class="btn btn-primary">Upload</button>
+  		<div class="col">
+      		<div class="form-outline">
+      			<label class="form-label" for="pstart">Project Start Date</label>
+        		<input type="date" name="pstart" id="pstart" value="${row.startDate}" class="form-control" />
+      		</div><br>
+      		<div class="form-outline">
+      			<label class="form-label" for="pend">Project End Date</label>
+    			<input type="date" name="pend" id="pend" value="${row.endDate}" class="form-control" /><br>
+  			</div>
+    	</div>
+  		<div class="form-outline mb-4">
+  			<label class="form-label" for="ptype">Project Type</label>
+    		<input type="text" name="ptype" id="ptype" value="${row.ptype}" class="form-control" />
+    	</div>
+    	<button type="reset" class="btn btn-secondary">Reset</button>
+  		<button type="submit" class="btn btn-primary">Submit</button>
+  		</c:forEach>
     	</form>
 	</div>
 	<script src="js/script.js"></script>

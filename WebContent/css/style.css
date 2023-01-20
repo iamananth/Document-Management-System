@@ -25,3 +25,7 @@ h1 {
 .container-lg{
 	margin-top:20px;
 }
+
+.selected {
+  background-color: #f2f2f2;
+}
