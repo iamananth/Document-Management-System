@@ -66,12 +66,12 @@
   			<div class="card-body">
     			<h5 class="card-title">Ongoing Projects</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+    			<form action="OngoingProject" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
   			</div>
   			<div class="card-body">
     			<h5 class="card-title">Archived Projects</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+    			<form action="ArchivedProject" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
   			</div>
 		</div><br>
 		<div class="card">

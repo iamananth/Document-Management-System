@@ -169,4 +169,34 @@
     <servlet-name>EditProject</servlet-name>
     <url-pattern>/EditProject</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArchivedProject</display-name>
+    <servlet-name>ArchivedProject</servlet-name>
+    <servlet-class>com.servlet.ArchivedProject</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArchivedProject</servlet-name>
+    <url-pattern>/ArchivedProject</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OngoingProject</display-name>
+    <servlet-name>OngoingProject</servlet-name>
+    <servlet-class>com.servlet.OngoingProject</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OngoingProject</servlet-name>
+    <url-pattern>/OngoingProject</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateProject</display-name>
+    <servlet-name>UpdateProject</servlet-name>
+    <servlet-class>com.servlet.UpdateProject</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateProject</servlet-name>
+    <url-pattern>/UpdateProject</url-pattern>
+  </servlet-mapping>
 </web-app>

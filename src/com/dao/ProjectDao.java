@@ -7,6 +7,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
 import com.pojo.ProjectDetails;
 import com.pojo.User;
@@ -53,5 +54,24 @@ public class ProjectDao {
 			session.save(p);
         	t.commit();
             session.close();  
+	}
+	public void upProject(String pcode,String pstart,String pend, String ptype){
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
+		  
+		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+		Session session = factory.openSession();  
+		Transaction t = session.beginTransaction();
+		
+		Query q = session.createQuery("UPDATE ProjectDetails SET startDate = :sdate, endDate = :edate, ptype = :ptype WHERE pcode = :pcode");
+		q.setParameter("sdate", pstart);
+		q.setParameter("edate", pend);
+		q.setParameter("ptype", ptype);
+		q.setParameter("pcode", pcode);
+		
+		q.executeUpdate();
+		
+		t.commit();
+		session.close();
 	}
 }

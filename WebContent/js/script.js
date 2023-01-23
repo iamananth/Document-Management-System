@@ -61,6 +61,7 @@ $(document).ready( function () {
     });
 } );
 
+
 function selectRow(radio) {
     var row = radio.parentNode.parentNode;
     var rows = document.getElementById("myTable").getElementsByTagName("tr");
@@ -71,8 +72,14 @@ function selectRow(radio) {
     row.classList.add("selected");
   }
 
-function downProject(fname) {
-	  var xhr = new XMLHttpRequest();
-	  xhr.open("GET", "DownloadServlet/?fname=" + fname, true);
-	  xhr.send();
-	}
+function sendHeartbeat() {
+    // send a GET request to the heartbeat servlet
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/HeartbeatTimeoutServlet", true);
+    xhr.send();
+
+    // call this function again in a few seconds
+    setTimeout(sendHeartbeat, 5000);
+}
+
+sendHeartbeat();

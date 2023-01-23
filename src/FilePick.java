@@ -24,8 +24,8 @@ public class FilePick extends Thread {
 				String name = file.getName();
 				String pcode = FilenameUtils.removeExtension(name);
 				logger.info(name);
-				int i = fdao.chkFile(name);
-				if(i < 0){
+				boolean i = fdao.chkFile(name);
+				if(!i){
 					logger.info(name + " is not saved");
 					try {
 						st = fdao.FileUp(pcode, name);

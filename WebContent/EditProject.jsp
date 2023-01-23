@@ -55,12 +55,12 @@
 </nav>
 	<div class="container-lg">
 	<h4>Edit Project Details</h4>
-	<form action="EditServlet" method="post">
+	<form action="UpdateProject" method="post">
 	<c:forEach items="${details}" var="row">
   		<div class="row mb-4">
     		<div class="col">
       			<div class="form-outline">
-      			<input type="hidden" name="uid" id="uid" value="${user.id}"/>
+      			<input type="hidden" name="uid" id="uid" value="${user.username}"/>
       				<label class="form-label" for="pcode">Project Code</label>
        				<input type="text" name="pcode" id="pcode" value="${row.pcode}" class="form-control" />
       			</div>
