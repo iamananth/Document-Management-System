@@ -26,17 +26,22 @@ public class ViewDetailsDao {
 		Session session = factory.openSession();  
 		Transaction t = session.beginTransaction();
 		
-		@SuppressWarnings("rawtypes")
-		Query q = session.createQuery("FROM ProjectDetails WHERE user_id = :userId");
-		q.setParameter("userId", user_id);
-		@SuppressWarnings("unchecked")
-		List<ProjectDetails> details = q.list();
-		
-		
-		t.commit();
-		session.close();
-		
-		return details;
+		if(user_id == 144){
+			@SuppressWarnings("rawtypes")
+			Query q = session.createQuery("FROM ProjectDetails");
+			@SuppressWarnings("unchecked")
+			List<ProjectDetails> details = q.list();
+			t.commit();
+			return details;
+		}else{
+			@SuppressWarnings("rawtypes")
+			Query q = session.createQuery("FROM ProjectDetails WHERE user_id = :userId");
+			q.setParameter("userId", user_id);
+			@SuppressWarnings("unchecked")
+			List<ProjectDetails> details = q.list();
+			t.commit();
+			return details;
+		}
 		
 	}
 	

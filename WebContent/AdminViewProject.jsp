@@ -38,7 +38,7 @@ $(document).ready( function () {
 			}
 	%>
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">DMS</a>
+  <a class="navbar-brand" href="UserDashboard.jsp">DMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -46,14 +46,14 @@ $(document).ready( function () {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
+        <a class="nav-link" href="AdminDashboard.jsp">Admin Dashboard</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="ProjectEntry.jsp">Add Project</a>
-      </li>
-      <li class="nav-item active">
-		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
-      </li>
+<!--       <li class="nav-item active"> -->
+<!--         <a class="nav-link" href="UserManage.jsp">Manage Users</a> -->
+<!--       </li> -->
+<!--       <li class="nav-item active"> -->
+<!-- 		<a class="nav-link" href="FileUpload.jsp">View Users</a> -->
+<!--       </li> -->
       <li class="nav-item active">
         <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 950px;">Logout</button></form>
       </li>
@@ -97,6 +97,7 @@ $(document).ready( function () {
       <th scope="col">End Date</th>
       <th scope="col">Project Type</th>
       <th scope="col">File Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -108,6 +109,7 @@ $(document).ready( function () {
       <td id="pend">${row.endDate}</td>
       <td id="ptype">${row.ptype}</td>
       <td id="filename">${row.fileName}</td>
+      <td id="id">${row.user.username}</td>
     </tr>
     </c:forEach>
   </tbody>
@@ -133,8 +135,6 @@ $(document).ready( function () {
 	      rows[i].classList.remove("selected");
 	    }
 	    row.classList.add("selected");
-	    
-	    
 	  }
 	</script>
 </body>

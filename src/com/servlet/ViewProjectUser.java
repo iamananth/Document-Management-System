@@ -27,8 +27,14 @@ public class ViewProjectUser extends HttpServlet {
 		int userid = u.getId();
 		ViewDetailsDao dao = new ViewDetailsDao();
 		List<ProjectDetails> details = dao.getProjectDetails(userid);
-		request.setAttribute("details",details);
-        request.getRequestDispatcher("ViewProjectDetails.jsp").forward(request, response);
+		if(userid == 144){
+			request.setAttribute("details",details);
+	        request.getRequestDispatcher("AdminViewProject.jsp").forward(request, response);
+		}else{
+			request.setAttribute("details",details);
+	        request.getRequestDispatcher("ViewProjectDetails.jsp").forward(request, response);
+		}
+		
 	}
 
 

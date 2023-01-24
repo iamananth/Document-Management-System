@@ -31,11 +31,18 @@ public class UserLogin extends HttpServlet {
 		User user = dao.login(userid, password);
 		
 		if (user != null) {
+			if(userid == 144){
+				HttpSession session = request.getSession();
+				  session.setAttribute("user", user);
+				  logger.info("User " + user.getUsername() + " logged in successfully.");
+				  response.sendRedirect("AdminDashboard.jsp");
+			}else{
 			  HttpSession session = request.getSession();
 			  session.setAttribute("user", user);
 			  logger.info("User " + user.getUsername() + " logged in successfully.");
 			  response.sendRedirect("UserDashboard.jsp");
-			} else {
+			}
+		} else {
 			  request.setAttribute("errorMessage", "Invalid username or password");
 			  request.getRequestDispatcher("UserLogin.jsp").forward(request, response);
 			}

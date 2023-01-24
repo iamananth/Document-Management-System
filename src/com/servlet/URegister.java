@@ -1,6 +1,8 @@
 package com.servlet;
 
 import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
@@ -29,15 +31,25 @@ public class URegister extends HttpServlet {
         String dept = request.getParameter("dept");
         String ph = request.getParameter("ph");
         
+        MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        byte[] hash = md.digest(pass.getBytes());
+        String hashedPassword = new String(hash, "UTF-8");
+        
         User u = new User();
         u.setUsername(uname);
-        u.setPassword(pass);
+        u.setPassword(hashedPassword);
         u.setDepartment(dept);
         u.setPhone_number(ph);
         
         RegisterDao dao = new RegisterDao();
         dao.register(u);
-        RequestDispatcher rs = request.getRequestDispatcher("UserManage.jsp");
+        RequestDispatcher rs = request.getRequestDispatcher("AdminDashboard.jsp");
         rs.forward(request, response);
 	}
 

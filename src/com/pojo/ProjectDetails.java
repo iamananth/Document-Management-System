@@ -1,11 +1,21 @@
 package com.pojo;
 
+import javax.persistence.ManyToOne;
+
+
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 public class ProjectDetails {
 	private String pcode;
 	private String startDate;
 	private String endDate;
 	private String ptype;
 	private String fileName;
+	
+	@ManyToOne
+	@Fetch(FetchMode.JOIN)
 	private User user;
 	
 	public String getPcode() {
