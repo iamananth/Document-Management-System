@@ -209,4 +209,34 @@
     <servlet-name>AdminAddUser</servlet-name>
     <url-pattern>/AdminAddUser</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditUser</display-name>
+    <servlet-name>EditUser</servlet-name>
+    <servlet-class>com.servlet.EditUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditUser</servlet-name>
+    <url-pattern>/EditUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateUser</display-name>
+    <servlet-name>UpdateUser</servlet-name>
+    <servlet-class>com.servlet.UpdateUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUser</servlet-name>
+    <url-pattern>/UpdateUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteUser</display-name>
+    <servlet-name>DeleteUser</servlet-name>
+    <servlet-class>com.servlet.DeleteUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUser</servlet-name>
+    <url-pattern>/DeleteUser</url-pattern>
+  </servlet-mapping>
 </web-app>

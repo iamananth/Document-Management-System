@@ -45,8 +45,8 @@
 </nav>
 <div class="container-lg">
 <h5>User Details</h5>
-<form action="EditProject" method="get"><input type="hidden" id="ppcode1" name="pcode" /><button type="submit" class="btn btn-success">Edit</button></form>
-<form action="DeleteProjectServlet" method="get"><input type="hidden" id="fname2" name="fname" /><input type="hidden" id="ppcode2" name="pcode"/><button style="margin-left: 61px;margin-top: -38px;" type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new">Delete</button></form><br>
+<form action="EditUser" method="get"><input type="hidden" id="id" name="id" /><button type="submit" class="btn btn-success">Edit</button></form>
+<form action="DeleteUser" method="get"><input type="hidden" id="id1" name="id1" /><button style="margin-left: 61px;margin-top: -38px;" type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new">Delete</button></form><br>
 <table class="table table-bordered table-sm" id="myTable">
   <thead>
     <tr>
@@ -83,11 +83,8 @@ $(document).ready( function () {
 	function selectRow(radio) {
 	    var row = radio.parentNode.parentNode;
 	    var id = row.getElementsByTagName("th")[0].innerHTML;
-	    document.getElementById("fname").value = pcode+".pdf";
-	    document.getElementById("fname1").value = pcode+".pdf";
-	    document.getElementById("fname2").value = pcode+".pdf";
-	    document.getElementById("ppcode1").value = pcode;
-	    document.getElementById("ppcode2").value = pcode;
+	    document.getElementById("id").value = id;
+	    document.getElementById("id1").value = id;
 	    var rows = document.getElementById("myTable").getElementsByTagName("tr");
 	    
 	    for (var i = 0; i < rows.length; i++) {
@@ -97,6 +94,7 @@ $(document).ready( function () {
 	  }
 	</script>
 </body>
+<br><br><br>
 <div class="footer">
   <p style="text-align: center;">Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
 </div>
