@@ -58,7 +58,7 @@
     		<div class="col">
       			<div class="form-outline">
       				<label class="form-label" for="pcode">Project Code</label>
-       				<input type="text" name="pcode" id="pcode" class="form-control" />
+       				<input type="text" name="pcode" id="pcode" value="${pcode}" class="form-control" />
       			</div>
     	   </div>
   		</div>
@@ -70,9 +70,7 @@
 	</div>
 	<script src="js/script.js"></script>
 </body>
-<div class="position-absolute bottom-0 start-50 translate-middle-x">
-<footer>
+<div class="footer">
   <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
-</footer>
 </div>
 </html>

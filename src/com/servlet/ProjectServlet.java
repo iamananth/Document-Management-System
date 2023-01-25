@@ -39,6 +39,7 @@ public class ProjectServlet extends HttpServlet {
 //			User u = new User(userid);
 			HttpSession session = request.getSession();
 			User u = (User) session.getAttribute("user");
+			session.setAttribute("pcode", projectCode);
 			
 			ProjectDetails p = new ProjectDetails();
 			p.setPcode(projectCode);

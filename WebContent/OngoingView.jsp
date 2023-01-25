@@ -138,9 +138,7 @@ $(document).ready( function () {
 	  }
 	</script>
 </body>
-<div class="position-absolute bottom-0 start-50 translate-middle-x">
-<footer>
+<div class="footer">
   <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
-</footer>
 </div>
 </html>
