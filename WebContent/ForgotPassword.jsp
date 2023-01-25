@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-	<h1 class="text-bg-primary p-3">Document Management System</h1>
+	<h1 class="text-bg-dark p-3">Document Management System</h1>
 	<img class="logo" src="images/logo.jpg">
 	<form action="ForgotPass" method="post">
 		<div class="form-container">
@@ -37,10 +37,10 @@
 			<input class="form-control form-control-sm" type="password" name="repassword" id="repass" placeholder="Retype new password"> 
 			<br>
 			<div class="text-center">
-				<input class="btn btn-primary" type="submit" onClick="clear()" value="Clear">
-				<input class="btn btn-primary" type="submit" onClick="register()" value="Reset">
+				<input class="btn" id="btn-yellow" type="submit" onClick="clear()" value="Clear">
+				<input class="btn" id="btn-yellow" type="submit" onClick="register()" value="Reset">
 				<br><br>
-				<a href="UserLogin.jsp">Login</a>
+				<a href="UserLogin.jsp" id="text-yellow">Login</a>
 			</div>
 		</div>
 	</form>

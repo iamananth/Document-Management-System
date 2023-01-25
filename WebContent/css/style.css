@@ -19,7 +19,7 @@ h1 {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 90px;
+	width: 126px;
 	height: 90px;
 }
 .container-lg{
@@ -27,7 +27,7 @@ h1 {
 }
 
 .selected {
-  background-color: #f2f2f2;
+  background-color: #b9a246;
 }
 
 .footer {
@@ -38,4 +38,13 @@ h1 {
   background-color: #b9a246;
   color: white;
   text-align: center;
+}
+
+#btn-yellow{
+	background-color: #b9a246;
+	color: white;
+}
+
+#text-yellow{
+	color: #b9a246;
 }

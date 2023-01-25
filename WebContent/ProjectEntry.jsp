@@ -28,7 +28,7 @@
 
 			}
 	%>
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">DMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -77,8 +77,8 @@
   			<label class="form-label" for="ptype">Project Type</label>
     		<input type="text" name="ptype" id="ptype" class="form-control" />
     	</div>
-    	<button type="reset" class="btn btn-secondary">Reset</button>
-  		<button type="submit" class="btn btn-primary">Submit</button>
+    	<button type="reset" class="btn" id="btn-yellow">Reset</button>
+  		<button type="submit" class="btn" id="btn-yellow">Submit</button>
     	</form>
 	</div>
 	<script src="js/script.js"></script>

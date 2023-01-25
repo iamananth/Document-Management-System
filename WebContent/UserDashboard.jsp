@@ -33,7 +33,7 @@
 
 			}
 	%>
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="UserDashboard.jsp">DMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -66,19 +66,19 @@
   			<div class="card-body">
     			<h5 class="card-title">Ongoing Projects</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<form action="OngoingProject" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+    			<form action="OngoingProject" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
   			</div>
   			<div class="card-body">
     			<h5 class="card-title">Archived Projects</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<form action="ArchivedProject" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+    			<form action="ArchivedProject" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
   			</div>
 		</div><br>
 		<div class="card">
   			<div class="card-body">
     			<h5 class="card-title">All Projects</h5>
     			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
-    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
   			</div>
 		</div><br>
 <!-- 		<div class="card"> -->

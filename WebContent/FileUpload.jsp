@@ -28,7 +28,7 @@
 
 			}
 	%>
-	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">DMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -62,10 +62,9 @@
       			</div>
     	   </div>
   		</div>
-  		
     		<label for="formFile" class="form-label">Upload Documents</label>
 			<input class="form-control" name="fileName" type="file" id="formFile" /><br>
-    	<button type="submit" class="btn btn-primary">Upload</button>
+    	<button type="submit" class="btn" id="btn-yellow">Upload</button>
     	</form>
 	</div>
 	<script src="js/script.js"></script>

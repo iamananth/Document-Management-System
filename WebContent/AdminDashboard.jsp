@@ -66,7 +66,7 @@
 					<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
-					<input type="submit" class="btn btn-primary" value="Save Changes"/>
+					<input type="submit" class="btn" id="btn-yellow" value="Save Changes"/>
 				</div>
 				</form>
 					
@@ -75,7 +75,7 @@
 			</div>
 		</div>
 	</div>
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="UserDashboard.jsp">DMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -107,18 +107,18 @@
 		<h5 class="card-header">Featured</h5>
   			<div class="card-body">
     			<h5 class="card-title">Add Users</h5>
-    			<button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary add-new">Add</button>
+    			<button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn" id="btn-yellow">Add</button>
   			</div>
   			<div class="card-body">
     			<h5 class="card-title">View Users</h5>
 <!--     			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-    			<form action="UserDetails" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+    			<form action="UserDetails" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
   			</div>
 		</div><br>
 		<div class="card">
   			<div class="card-body">
     			<h5 class="card-title">All Projects</h5>
-    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn btn-primary add-new">View</button></form>
+    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
   			</div>
 		</div><br>
 <!-- 		<div class="card"> -->
