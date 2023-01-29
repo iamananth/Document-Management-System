@@ -27,7 +27,7 @@
 </head>
 <body>
 	<h1 class="text-bg-dark p-3">Document Management System</h1>
-	<img class="logo" src="images/Zafin.png">
+	<img class="logo" src="images/logo.png">
 	<form action="UserLogin" method="post">
 		<div class="form-container">
 		<%
@@ -38,7 +38,7 @@
   		<div class="alert alert-danger" role="alert">
     		<%= errorMessage %>
   		</div>
-  		
+
 		<%
   			}
 		%>

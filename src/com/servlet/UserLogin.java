@@ -1,6 +1,12 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+
+
+
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,11 +40,19 @@ public class UserLogin extends HttpServlet {
 			if(userid == 144){
 				HttpSession session = request.getSession();
 				  session.setAttribute("user", user);
+				  String pattern = "E, dd MMM yyyy HH:mm:ss z";
+				  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				  String date = simpleDateFormat.format(new Date());
+				  session.setAttribute("loginTime", date);
 				  logger.info("User " + user.getUsername() + " logged in successfully.");
 				  response.sendRedirect("AdminDashboard.jsp");
 			}else{
 			  HttpSession session = request.getSession();
 			  session.setAttribute("user", user);
+			  String pattern = "E, dd MMM yyyy HH:mm:ss z";
+			  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			  String date = simpleDateFormat.format(new Date());
+			  session.setAttribute("loginTime", date);
 			  logger.info("User " + user.getUsername() + " logged in successfully.");
 			  response.sendRedirect("UserDashboard.jsp");
 			}
