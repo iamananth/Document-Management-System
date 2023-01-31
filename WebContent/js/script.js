@@ -1,10 +1,11 @@
 function register() {
-	var userid = document.getElementById("userid").value;
+	var username = document.getElementById("uname").value;
 	var pass = document.getElementById("pass").value;
 	var repass = document.getElementById("repass").value;
 	var decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+	var ph = document.getElementById("ph");
 
-	if (userid == '') {
+	if (username == '') {
 		alert("Please enter your user name");
 		return false;
 	}
@@ -22,6 +23,10 @@ function register() {
 	}
 	if (!pass.match(decimal)) {
 		alert("Password should be between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character.");
+		return false;
+	}
+	if(ph.value.length!=10){
+		alert("Enter a valid mobile number!");
 		return false;
 	}
 

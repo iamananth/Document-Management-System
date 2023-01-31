@@ -60,7 +60,7 @@ public class EditProject extends HttpServlet {
 		
 		EditDao dao = new EditDao();
 	    dao.editProject(p,u);
-	    logger.info("User " + u.getUsername() + " edited project details successfully.");
+	    logger.info("User " + u.getUsername() + " edited project details of project code "+projectCode);
 	    	String message = "Updated Successfully";
 	    	request.setAttribute("message", message);
 	    	response.sendRedirect("FileUpload.jsp");

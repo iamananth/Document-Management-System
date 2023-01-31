@@ -9,25 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
-
 import com.dao.RegisterDao;
 import com.pojo.User;
 
 /**
- * Servlet implementation class UserRegister
+ * Servlet implementation class AddUser
  */
-public class UserRegister extends HttpServlet {
+public class AddUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static final Logger logger = Logger.getLogger(UserRegister.class);
        
-    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String name = request.getParameter("username");
+		String name = request.getParameter("uname");
 		String dept = request.getParameter("dept");
 		String ph = request.getParameter("ph");
-		String pass = request.getParameter("password");
+		String pass = request.getParameter("pass");
 		
 		MessageDigest md = null;
 		try {
@@ -39,8 +34,6 @@ public class UserRegister extends HttpServlet {
 		byte[] hash = md.digest(pass.getBytes());
 		String hashedPassword = new String(hash, "UTF-8");
 		
-		logger.info(name + "tried to register.");
-		
 		User u = new User();
 		u.setUsername(name);
 		u.setDepartment(dept);
@@ -49,9 +42,7 @@ public class UserRegister extends HttpServlet {
 		
 		RegisterDao dao = new RegisterDao();		
 		dao.register(u);
-		logger.info("User " + u.getUsername() + "registered successfully.");
-		response.sendRedirect("UserLogin.jsp");
-		
+		response.sendRedirect("AdminDashboard.jsp");
 	}
 
 }

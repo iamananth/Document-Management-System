@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.dao.ViewDetailsDao;
 import com.pojo.ProjectDetails;
 import com.pojo.User;
@@ -18,6 +20,7 @@ import com.pojo.User;
  */
 public class ArchivedProject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger logger = Logger.getLogger(ArchivedProject.class);
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,6 +29,7 @@ public class ArchivedProject extends HttpServlet {
 		User u = (User) session.getAttribute("user");
 		int userid = u.getId();
 		ViewDetailsDao dao = new ViewDetailsDao();
+		logger.info("User " + u.getUsername() + " viewed archived project details.");
 		List<ProjectDetails> details = dao.getArchived(userid);
 		request.setAttribute("details",details);
         request.getRequestDispatcher("ArchivedView.jsp").forward(request, response);

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.dao.RegisterDao;
 import com.pojo.User;
 
@@ -21,8 +23,7 @@ public class URegister extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-
+	static final Logger logger = Logger.getLogger(URegister.class);
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
@@ -30,6 +31,7 @@ public class URegister extends HttpServlet {
         String pass = request.getParameter("pass");
         String dept = request.getParameter("dept");
         String ph = request.getParameter("ph");
+ 
         
         MessageDigest md = null;
 		try {
@@ -49,6 +51,7 @@ public class URegister extends HttpServlet {
         
         RegisterDao dao = new RegisterDao();
         dao.register(u);
+        logger.info("User " + u.getUsername() + " registered successfully.");
         RequestDispatcher rs = request.getRequestDispatcher("AdminDashboard.jsp");
         rs.forward(request, response);
 	}

@@ -29,7 +29,7 @@
 			}
 	%>
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="UserDashboard.jsp">DMS</a>
+  <a class="navbar-brand" href="AdminDashboard.jsp">DMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -37,68 +37,59 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
+        <a class="nav-link" href="AdminDashboard.jsp">Admin Dashboard</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="ProjectEntry.jsp">Add Project</a>
-      </li>
-      <li class="nav-item active">
-		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
-      </li>
-      <li class="nav-item active">
-		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 776px;">
+<!--       <li class="nav-item active"> -->
+<!--         <a class="nav-link" href="UserManage.jsp">Manage Users</a> -->
+<!--       </li> -->
+<!--       <li class="nav-item active"> -->
+<!-- 		<a class="nav-link" href="FileUpload.jsp">View Users</a> -->
+<!--       </li> -->
+	<li class="nav-item active">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 938px;">
   			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
   			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" style="margin-left: 335px;"></path>
 		</svg>
       </li>
       <li class="nav-item active">
-		<a class="nav-link" style="position: relative;left: 771px;">${user.username}</a>
+		<a class="nav-link" style="position: relative;left: 933px;">${user.username}</a>
       </li>
       <li class="nav-item active">
-        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 783px;">Logout</button></form>
+        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 950px;">Logout</button></form>
       </li>
     </ul>
   </div>
 </nav>
 	<div class="container-lg">
-	<h4>Project Details</h4>
-	<form action="ProjectServlet" method="post">
+	<h4>Add User</h4>
+	<form action="AddUser" onSubmit="return register()" method="post">
   		<div class="row mb-4">
     		<div class="col">
       			<div class="form-outline">
-      			<input type="hidden" name="uid" id="uid" value="${user.id}"/>
-      				<label class="form-label" for="pcode">Project Code</label>
-       				<input type="text" name="pcode" id="pcode" class="form-control" />
+      				<label class="form-label" for="uname">Username</label>
+       				<input type="text" name="uname" id="uname" class="form-control" />
       			</div>
     	   </div>
   		</div>
-  		<div class="col">
       		<div class="form-outline">
-      			<label class="form-label" for="pstart">Project Start Date</label>
-        		<input type="date" name="pstart" id="pstart" class="form-control" />
+      			<label class="form-label" for="dept">Department</label>
+        		<input type="text" name="dept" id="dept" class="form-control" />
       		</div><br>
       		<div class="form-outline">
-      			<label class="form-label" for="pend">Project End Date</label>
-    			<input type="date" name="pend" id="pend" class="form-control" /><br>
+      			<label class="form-label" for="ph">Phone number</label>
+    			<input type="number" name="ph" id="ph" class="form-control" /><br>
   			</div>
+  		<div class="form-outline">
+  			<label class="form-label" for="pass">Password</label>
+    		<input type="password" name="pass" id="pass" class="form-control" />
+    	</div><br>
+    	<div class="form-outline">
+  			<label class="form-label" for="repass">Retype Password</label>
+    		<input type="password" name="repass" id="repass" class="form-control" />
     	</div>
-  		<div class="form-outline mb-4">
-  			<label class="form-label" for="ptype">Project Type</label>
-    		<input type="text" name="ptype" id="ptype" class="form-control" />
-<!--     		<div class="input-group mb-3"> -->
-<!--   				<select class="custom-select" id="ptype" name="ptype"> -->
-<!--     				<option selected>Choose...</option> -->
-<!--     					<option value="1">Licence Subscription</option> -->
-<!--     					<option value="2">Fixed Capacity</option> -->
-<!--     					<option value="3">CRs</option> -->
-<!--     					<option value="4">T&M</option> -->
-<!--     					<option value="5">AMC</option> -->
-<!--     					<option value="6">Implementation</option> -->
-<!--   				</select> -->
-<!-- 			</div> -->
-    	</div>
+    	<br>
     	<button type="reset" class="btn" id="btn-yellow">Reset</button>
-  		<button type="submit" class="btn" id="btn-yellow">Submit</button>
+  		<input class="btn" id="btn-yellow" type="submit" value="Add">
     	</form>
 	</div>
 	<script src="js/script.js"></script>

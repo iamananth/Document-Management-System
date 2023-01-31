@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.dao.ViewDetailsDao;
 import com.pojo.ProjectDetails;
 import com.pojo.User;
@@ -18,6 +20,7 @@ import com.pojo.User;
  */
 public class ViewProjectUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger logger = Logger.getLogger(ViewProjectUser.class);
        
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,9 +31,11 @@ public class ViewProjectUser extends HttpServlet {
 		ViewDetailsDao dao = new ViewDetailsDao();
 		List<ProjectDetails> details = dao.getProjectDetails(userid);
 		if(userid == 144){
+			logger.info("User " + u.getUsername() + "viewed project details");
 			request.setAttribute("details",details);
 	        request.getRequestDispatcher("AdminViewProject.jsp").forward(request, response);
 		}else{
+			logger.info("User " + u.getUsername() + " viewed project details.");
 			request.setAttribute("details",details);
 	        request.getRequestDispatcher("ViewProjectDetails.jsp").forward(request, response);
 		}

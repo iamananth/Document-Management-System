@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.dao.ProjectDao;
 import com.pojo.ProjectDetails;
 import com.pojo.User;
@@ -19,6 +21,7 @@ import com.pojo.User;
  */
 public class UpdateProject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger logger = Logger.getLogger(UpdateProject.class);
        
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,14 +30,13 @@ public class UpdateProject extends HttpServlet {
 		String startDate = request.getParameter("pstart");
 		String endDate = request.getParameter("pend");
 		String projectType = request.getParameter("ptype");
+		
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("user");
 	
 		ProjectDao dao = new ProjectDao();
 	    dao.upProject(projectCode,startDate,endDate,projectType);
-//	    logger.info("User " + u.getUsername() + " saved project details successfully.");
-//	    FilePick f = new FilePick();
-//	    f.start();
-//	    	String message = "Updated Successfully";
-//	    	request.setAttribute("message", message);
+	    logger.info("User " + u.getUsername() + " updated project details of project code "+ projectCode);
     	response.sendRedirect("UserDashboard.jsp");
 	}
 

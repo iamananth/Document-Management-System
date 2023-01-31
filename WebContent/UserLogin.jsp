@@ -56,7 +56,7 @@
 			<br><br>
 			<input class="btn" id="btn-yellow" type="submit" onClick="login()" value="Login">
 			<br><br>
-			<a href="UserRegister.jsp" style="color: #b9a246;">New User? Register Here!</a>
+<!-- 			<a href="UserRegister.jsp" style="color: #b9a246;">New User? Register Here!</a> -->
 			</div>
 		</div>
 	</form>
