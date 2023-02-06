@@ -55,16 +55,16 @@ $(document).ready( function () {
 		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
       </li> -->
       <li class="nav-item active">
-		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 776px;">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 960px;">
   			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
   			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" style="margin-left: 335px;"></path>
 		</svg>
       </li>
       <li class="nav-item active">
-		<a class="nav-link" style="position: relative;left: 771px;">${user.username}</a>
+		<a class="nav-link" style="position: relative;left: 953px;">${user.username}</a>
       </li>
       <li class="nav-item active">
-        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 783px;">Logout</button></form>
+        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 963px;">Logout</button></form>
       </li>
     </ul>
   </div>
@@ -101,6 +101,7 @@ $(document).ready( function () {
   <thead>
     <tr>
       <th></th>
+      <th scope="col">GUID</th>
       <th scope="col">Project Code</th>
       <th scope="col">Start Date</th>
       <th scope="col">End Date</th>
@@ -112,7 +113,8 @@ $(document).ready( function () {
   <c:forEach items="${details}" var="row">
     <tr>
     <td><input type="radio" id="radioButton" onclick="selectRow(this)" name="choice" /></td>
-	 <th id="pcode" scope="row">${row.pcode}</th>
+	<th id="guid" scope="row">${row.guid}</th>
+	  <td id="pcode">${row.pcode}</td>
       <td id="pstart">${row.startDate}</td>
       <td id="pend">${row.endDate}</td>
       <td id="ptype">${row.ptype}</td>
@@ -122,20 +124,22 @@ $(document).ready( function () {
   </tbody>
 </table>
 <form action="DownloadServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname" name="fname" /><button type="submit" class="btn btn-info">Download</button></form><br>
-<form action="ViewPdfServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname1" name="fname" /><button type="submit" class="btn btn-warning" style="margin-left: 107px;margin-top: -59px;">View</button></form>
-<form action="EditProject" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="ppcode1" name="pcode" /><button type="submit" class="btn btn-success" style="margin-left: 177px;margin-top: -77px;">Edit</button></form>
-<form action="DeleteProjectServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname2" name="fname" /><input type="hidden" id="ppcode2" name="pcode"/><button type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new" style="margin-left: 240px;margin-top: -94px;">Delete</button></form>
+<form action="ViewPdfServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname1" name="fname" /><!-- <input type="hidden" id="ppcode" name="ppcode" /> --><button type="submit" class="btn btn-warning" style="margin-left: 107px;margin-top: -59px;">View</button></form>
+<form action="EditProject" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="guid1" name="guid1" /><button type="submit" class="btn btn-success" style="margin-left: 177px;margin-top: -77px;">Edit</button></form>
+<form action="DeleteProjectServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname2" name="fname" /><input type="hidden" id="guid2" name="guid"/><button type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new" style="margin-left: 240px;margin-top: -94px;">Delete</button></form>
 </div>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
 	function selectRow(radio) {
 	    var row = radio.parentNode.parentNode;
-	    var fn = row.getElementsByTagName("td")[4].innerHTML;
+	    var guid = row.getElementsByTagName("th")[0].innerHTML;
+	    var pcode = row.getElementsByTagName("td")[1].innerHTML;
+	    var fn = row.getElementsByTagName("td")[5].innerHTML;
 	    document.getElementById("fname").value = fn;
 	    document.getElementById("fname1").value = fn;
 	    document.getElementById("fname2").value = fn;
-	    document.getElementById("ppcode1").value = pcode;
-	    document.getElementById("ppcode2").value = pcode;
+	    document.getElementById("guid1").value = guid;
+	    document.getElementById("guid2").value = guid;
 	    var rows = document.getElementById("myTable").getElementsByTagName("tr");
 	    
 	    for (var i = 0; i < rows.length; i++) {

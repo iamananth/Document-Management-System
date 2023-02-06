@@ -145,10 +145,6 @@
   <session-config>
     <session-timeout>2</session-timeout>
   </session-config>
-  <error-page>
-    <exception-type>java.lang.Exception</exception-type>
-    <location>/errorpages/exception.html</location>
-  </error-page>
   <servlet>
     <description></description>
     <display-name>DeleteProjectServlet</display-name>

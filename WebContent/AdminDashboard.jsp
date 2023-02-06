@@ -92,27 +92,27 @@
 <!--       <li class="nav-item active"> -->
 <!-- 		<a class="nav-link" href="FileUpload.jsp">View Users</a> -->
 <!--       </li> -->
-	<li class="nav-item active">
-		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 938px;">
+	 <li class="nav-item active">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 1075px;">
   			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
   			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" style="margin-left: 335px;"></path>
 		</svg>
       </li>
       <li class="nav-item active">
-		<a class="nav-link" style="position: relative;left: 933px;">${user.username}</a>
+		<a class="nav-link" style="position: relative;left: 1070px;">${user.username}</a>
       </li>
       <li class="nav-item active">
-        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 950px;">Logout</button></form>
+        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 1090px;">Logout</button></form>
       </li>
     </ul>
   </div>
 </nav>
 	<div class="container-lg">
-		<div class="alert alert-success" role="alert">
+		<div class="alert" style="background-color: #b9a246;" role="alert">
 			Welcome, <c:out value="${user.username}" /> <br>Last login: ${loginTime}
 		</div>
 <!-- 		<form action="UserLogout" method="post"><button class="btn btn-danger" style="margin-left: 937px; margin-top: -62px;">Logout</button></form> -->
- 		<div class="card">
+ 		<div class="card text-bg-dark mb-3">
 		<h5 class="card-header">Manage Users</h5>
   			<div class="card-body">
     			<h5 class="card-title">Add Users</h5>
@@ -124,7 +124,7 @@
     			<form action="UserDetails" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
   			</div>
 		</div><br>
-		<div class="card">
+		<div class="card text-bg-dark mb-3">
 		<h5 class="card-header">Manage Projects</h5>
   			<div class="card-body">
     			<h5 class="card-title">All Projects</h5>

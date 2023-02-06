@@ -90,7 +90,17 @@
     	</div>
   		<div class="form-outline mb-4">
   			<label class="form-label" for="ptype">Project Type</label>
-    		<input type="text" name="ptype" id="ptype" value="${row.ptype}" class="form-control" />
+    		<div class="input-group mb-3">
+  				<select class="custom-select" id="ptype" name="ptype">
+    				<option selected>${row.ptype}</option>
+    					<option value="Licence Subscription">Licence Subscription</option>
+    					<option value="Fixed Capacity">Fixed Capacity</option>
+    					<option value="CRs">CRs</option>
+    					<option value="T&M">T&M</option>
+    					<option value="AMC">AMC</option>
+    					<option value="Implementation">Implementation</option>
+  				</select>
+			</div>
     	</div>
     	<button type="reset" class="btn btn-secondary">Reset</button>
   		<button type="submit" class="btn" id="btn-yellow">Submit</button>
