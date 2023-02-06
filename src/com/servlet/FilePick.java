@@ -37,9 +37,7 @@ public class FilePick extends Thread {
 				}else{
 					logger.info("All Files are saved");
 				}
-			
 			}
-
 		}
 		
 	}

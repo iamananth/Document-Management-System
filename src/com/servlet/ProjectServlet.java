@@ -4,6 +4,7 @@ package com.servlet;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +28,7 @@ public class ProjectServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //			int userid = Integer.parseInt(request.getParameter("uid"));
+		
 			String projectCode = request.getParameter("pcode");
 			String startDate = request.getParameter("pstart");
 			String endDate = request.getParameter("pend");
@@ -40,8 +42,10 @@ public class ProjectServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			User u = (User) session.getAttribute("user");
 			session.setAttribute("pcode", projectCode);
+			UUID guid = (UUID) session.getAttribute("GUID");
 			
 			ProjectDetails p = new ProjectDetails();
+			p.setGuid(guid);
 			p.setPcode(projectCode);
 			p.setStartDate(startDate);
 			p.setEndDate(endDate);
@@ -56,11 +60,10 @@ public class ProjectServlet extends HttpServlet {
 			ProjectDao dao = new ProjectDao();
 		    dao.inProject(p,u);
 		    logger.info("User " + u.getUsername() + " saved project details successfully.");
-		    FilePick f = new FilePick();
-		    f.start();
-		    	String message = "Updated Successfully";
-		    	request.setAttribute("message", message);
-		    	response.sendRedirect("FileUpload.jsp");
+		    /*FilePick f = new FilePick();
+		    f.start();*/
+		    	request.setAttribute("guid", guid);
+		    	request.getRequestDispatcher("FileUpload.jsp").forward(request, response);
 		    }	
 }
 

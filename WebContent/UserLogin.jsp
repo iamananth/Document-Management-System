@@ -28,7 +28,7 @@
 <body>
 	<h1 class="text-bg-dark p-3">Document Management System</h1>
 	<img class="logo" src="images/logo.png">
-	<form action="UserLogin" method="post">
+	<form action="UserLogin" onSubmit="return login()" method="post">
 		<div class="form-container">
 		<%
 			String errorMessage = (String) request.getAttribute("errorMessage");
@@ -54,7 +54,7 @@
 			<div class="text-center">
 			<a href="ForgotPassword.jsp" style="color: #b9a246;">Forgot Password?</a>
 			<br><br>
-			<input class="btn" id="btn-yellow" type="submit" onClick="login()" value="Login">
+			<input class="btn" id="btn-yellow" type="submit" value="Login">
 			<br><br>
 <!-- 			<a href="UserRegister.jsp" style="color: #b9a246;">New User? Register Here!</a> -->
 			</div>

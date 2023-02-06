@@ -40,10 +40,7 @@
         <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="ProjectEntry.jsp">Add Project</a>
-      </li>
-      <li class="nav-item active">
-		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
+        <form id="GG" action="GuidGen" method="post"><a class="nav-link" href="#" onClick="document.getElementById('GG').submit();">Add Project</a></form>
       </li>
       <li class="nav-item active">
 		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 776px;">
@@ -66,13 +63,13 @@
   		<div class="row mb-4">
     		<div class="col">
       			<div class="form-outline">
-      				<label class="form-label" for="pcode">Project Code</label>
-       				<input type="text" name="pcode" id="pcode" value="${pcode}" class="form-control" />
+      				<label class="form-label" for="guidd"></label>
+       				<input type="text" name="guidd" id="guidd" value="${guid}" class="form-control" readonly/>
       			</div>
     	   </div>
   		</div>
     		<label for="formFile" class="form-label">Upload Documents</label>
-			<input class="form-control" name="fileName" type="file" id="formFile" /><br>
+			<input class="form-control" name="fileName" type="file" id="formFile"/><br>
     	<button type="submit" class="btn" id="btn-yellow">Upload</button>
     	</form>
 	</div>

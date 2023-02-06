@@ -1,5 +1,9 @@
 package com.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -55,7 +59,7 @@ public class ProjectDao {
         	t.commit();
             session.close();  
 	}
-	public void upProject(String pcode,String pstart,String pend, String ptype){
+	public void upProject(String pcode,String pstart,String pend, String ptype, UUID guid){
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
 		  
@@ -63,15 +67,37 @@ public class ProjectDao {
 		Session session = factory.openSession();  
 		Transaction t = session.beginTransaction();
 		
-		Query q = session.createQuery("UPDATE ProjectDetails SET startDate = :sdate, endDate = :edate, ptype = :ptype WHERE pcode = :pcode");
+		
+		
+		Query q = session.createQuery("UPDATE ProjectDetails SET startDate = :sdate, endDate = :edate, ptype = :ptype, pcode = :pcode WHERE guid =:guid");
 		q.setParameter("sdate", pstart);
 		q.setParameter("edate", pend);
 		q.setParameter("ptype", ptype);
 		q.setParameter("pcode", pcode);
-		
+		q.setParameter("guid",guid);
 		q.executeUpdate();
 		
 		t.commit();
 		session.close();
+	}
+
+	public String getFilename(String pcode){
+
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
+		  
+		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+		Session session = factory.openSession();  
+		Transaction t = session.beginTransaction();
+		
+		Query q = session.createQuery("SELECT fileName FROM ProjectDetails WHERE pcode = :pcode");
+		q.setParameter("pcode", pcode);		
+		String files = (String) q.uniqueResult();
+		
+		t.commit();
+		session.close();
+		
+		return files;
+		
 	}
 }

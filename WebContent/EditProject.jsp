@@ -42,10 +42,7 @@
         <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="ProjectEntry.jsp">Add Project</a>
-      </li>
-      <li class="nav-item active">
-		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
+        <form id="GG" action="GuidGen" method="post"><a class="nav-link" href="#" onClick="document.getElementById('GG').submit();">Add Project</a></form>
       </li>
       <li class="nav-item active">
 		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 776px;">
@@ -67,6 +64,13 @@
 	<form action="UpdateProject" method="post">
 	<c:forEach items="${details}" var="row">
   		<div class="row mb-4">
+  		<div class="col">
+      		<div class="form-outline">
+      			<label class="form-label" for="guid">Project GUID</label>
+        		<input type="text" name="guid" id="guid" value="${row.guid}" class="form-control" readonly/>
+      		</div><br>
+      		</div>
+      		</div>
     		<div class="col">
       			<div class="form-outline">
       			<input type="hidden" name="uid" id="uid" value="${user.username}"/>
@@ -74,7 +78,6 @@
        				<input type="text" name="pcode" id="pcode" value="${row.pcode}" class="form-control" />
       			</div>
     	   </div>
-  		</div>
   		<div class="col">
       		<div class="form-outline">
       			<label class="form-label" for="pstart">Project Start Date</label>
@@ -90,7 +93,7 @@
     		<input type="text" name="ptype" id="ptype" value="${row.ptype}" class="form-control" />
     	</div>
     	<button type="reset" class="btn btn-secondary">Reset</button>
-  		<button type="submit" class="btn btn-primary">Submit</button>
+  		<button type="submit" class="btn" id="btn-yellow">Submit</button>
   		</c:forEach>
     	</form>
 	</div>

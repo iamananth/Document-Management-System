@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,12 +29,22 @@ public class EditProject extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String pcode = request.getParameter("pcode");
+		String uuids = request.getParameter("guid1");
+		UUID guid = UUID.fromString(uuids);
+		System.out.print(guid);
 		
 		EditDao dao = new EditDao();
-		List<ProjectDetails> details = dao.getProjectDetails(pcode);
+		List<ProjectDetails> details = dao.getProjectDetails(guid);
 		request.setAttribute("details",details);
-        request.getRequestDispatcher("EditProject.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		int id = user.getId();
+		if(id == 144){
+			request.getRequestDispatcher("AdminEditProject.jsp").forward(request, response);
+		}
+		else{
+			request.getRequestDispatcher("EditProject.jsp").forward(request, response);
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,10 +54,14 @@ public class EditProject extends HttpServlet {
 		String endDate = request.getParameter("pend");
 		String projectType = request.getParameter("ptype");
 		
+		
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("user");
 		
+		UUID guid = (UUID) session.getAttribute("guid");
+		
 		ProjectDetails p = new ProjectDetails();
+		p.setGuid(guid);
 		p.setPcode(projectCode);
 		p.setStartDate(startDate);
 		p.setEndDate(endDate);

@@ -33,14 +33,14 @@ function register() {
 }
 
 function login(){
-	var uname = document.getElementById("uname").value;
+	var userid = document.getElementById("uid").value;
 	var pass = document.getElementById("pass").value;
-	if(uname == ''){
-		alert("Please enter your user name");
+	if(userid == ''){
+		alert("Please enter your user id.");
 		return false;
 	}
 	else if(pass == ''){
-		alert("Please enter your password");
+		alert("Please enter your password.");
 		return false;
 	}
 }
@@ -88,3 +88,7 @@ function sendHeartbeat() {
 }
 
 sendHeartbeat();
+
+function AddPro(){
+	document.getElementById("GG").submit();
+}

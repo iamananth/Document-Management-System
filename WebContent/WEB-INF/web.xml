@@ -259,4 +259,24 @@
     <servlet-name>LogView</servlet-name>
     <url-pattern>/LogView</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileUp</display-name>
+    <servlet-name>FileUp</servlet-name>
+    <servlet-class>com.servlet.FileUp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUp</servlet-name>
+    <url-pattern>/FileUp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GuidGen</display-name>
+    <servlet-name>GuidGen</servlet-name>
+    <servlet-class>com.servlet.GuidGen</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GuidGen</servlet-name>
+    <url-pattern>/GuidGen</url-pattern>
+  </servlet-mapping>
 </web-app>

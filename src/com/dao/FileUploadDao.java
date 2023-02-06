@@ -1,10 +1,18 @@
 package com.dao;
 
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.text.ParseException;
+import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Query;
+import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,7 +24,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import com.pojo.ProjectDetails;
 
 public class FileUploadDao {
-	public boolean FileUp(String pcode,String fileName) throws ParseException{
+	public boolean FileUp(UUID guid,String fileName) throws ParseException{
 //		Connection con = null;
 //        PreparedStatement pstmt = null;
 //        boolean status = false;
@@ -46,11 +54,13 @@ public class FileUploadDao {
 		Session session = factory.openSession();  
 		Transaction t = session.beginTransaction();
 		boolean status = false;
-		String qry = "UPDATE ProjectDetails SET file_name = :fileName WHERE p_code = :pCode";
-		
+		/*ProjectDetails pd = session.get(ProjectDetails.class, guid);
+		pd.setFileName(fileName);
+		session.update(pd);*/
+		String qry = "UPDATE ProjectDetails SET fileName = :fileName WHERE guid = :guid";
 		Query q = session.createQuery(qry);
-		q.setParameter("fileName",fileName);
-		q.setParameter("pCode", pcode);
+		q.setParameter("fileName", fileName);
+		q.setParameter("guid", guid);
 		q.executeUpdate();
 		status = true;
 		t.commit();

@@ -2,6 +2,7 @@ package com.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +24,8 @@ public class DeleteProjectServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String pcode = request.getParameter("pcode");
+		String uuid  = request.getParameter("guid");
+		UUID guid = UUID.fromString(uuid);
 		String fileName = request.getParameter("fname");
 		
 		HttpSession session = request.getSession();
@@ -31,20 +33,18 @@ public class DeleteProjectServlet extends HttpServlet {
 		
 		//Deleting the project Details
 		DeleteProjectDao dao = new DeleteProjectDao();
-		boolean st = dao.deleteProject(pcode);
+		boolean st = dao.deleteProject(guid);
 		
 		File file = new File("C:\\Users\\anant\\workspace\\DMS Project\\WebContent\\projectfiles\\" + fileName);
 	    
 		//Deleting the file from the server
 	    boolean st1 = file.delete();
-	    logger.info("User " + u.getUsername() + "deleted project details of project code "+pcode);
+	    logger.info("User " + u.getUsername() + "deleted project details of guid "+guid);
 	    System.out.println(file.getName() +"deleted.");
 	    
 	    if(st && st1){
 	    	response.sendRedirect("UserDashboard.jsp");
 	    }
-		
-		
 	}
 
 

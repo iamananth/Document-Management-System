@@ -40,11 +40,11 @@
         <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="ProjectEntry.jsp">Add Project</a>
+        <form id="GG" action="GuidGen" method="post"><a class="nav-link" href="#" onClick="document.getElementById('GG').submit();">Add Project</a></form>
       </li>
-      <li class="nav-item active">
+<!--       <li class="nav-item active">
 		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
-      </li>
+      </li> -->
       <li class="nav-item active">
 		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 776px;">
   			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
@@ -65,6 +65,10 @@
 	<form action="ProjectServlet" method="post">
   		<div class="row mb-4">
     		<div class="col">
+    		<div class="form-outline">
+      				<label class="form-label" for="guid">GUID</label>
+       				<input type="text" name="guid" id="guid" value="${GUID}" class="form-control" readonly/>
+      			</div><br>
       			<div class="form-outline">
       			<input type="hidden" name="uid" id="uid" value="${user.id}"/>
       				<label class="form-label" for="pcode">Project Code</label>
@@ -84,18 +88,17 @@
     	</div>
   		<div class="form-outline mb-4">
   			<label class="form-label" for="ptype">Project Type</label>
-    		<input type="text" name="ptype" id="ptype" class="form-control" />
-<!--     		<div class="input-group mb-3"> -->
-<!--   				<select class="custom-select" id="ptype" name="ptype"> -->
-<!--     				<option selected>Choose...</option> -->
-<!--     					<option value="1">Licence Subscription</option> -->
-<!--     					<option value="2">Fixed Capacity</option> -->
-<!--     					<option value="3">CRs</option> -->
-<!--     					<option value="4">T&M</option> -->
-<!--     					<option value="5">AMC</option> -->
-<!--     					<option value="6">Implementation</option> -->
-<!--   				</select> -->
-<!-- 			</div> -->
+    		<div class="input-group mb-3">
+  				<select class="custom-select" id="ptype" name="ptype">
+    				<option selected>Choose...</option>
+    					<option value="Licence Subscription">Licence Subscription</option>
+    					<option value="Fixed Capacity">Fixed Capacity</option>
+    					<option value="CRs">CRs</option>
+    					<option value="T&M">T&M</option>
+    					<option value="AMC">AMC</option>
+    					<option value="Implementation">Implementation</option>
+  				</select>
+			</div>
     	</div>
     	<button type="reset" class="btn" id="btn-yellow">Reset</button>
   		<button type="submit" class="btn" id="btn-yellow">Submit</button>

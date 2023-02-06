@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +16,7 @@ import com.pojo.ProjectDetails;
 import com.pojo.User;
 
 public class EditDao {
-	public List<ProjectDetails> getProjectDetails(String pcode){
+	public List<ProjectDetails> getProjectDetails(UUID guid){
 		
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
@@ -25,8 +26,8 @@ public class EditDao {
 		Transaction t = session.beginTransaction();
 		
 		@SuppressWarnings("rawtypes")
-		Query q = session.createQuery("FROM ProjectDetails WHERE p_code = :pCode");
-		q.setParameter("pCode", pcode);
+		Query q = session.createQuery("FROM ProjectDetails WHERE guid = :guid");
+		q.setParameter("guid", guid);
 		@SuppressWarnings("unchecked")
 		List<ProjectDetails> details = q.list();
 		

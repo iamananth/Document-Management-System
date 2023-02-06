@@ -49,11 +49,11 @@ $(document).ready( function () {
         <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="ProjectEntry.jsp">Add Project</a>
+        <form id="GG" action="GuidGen" method="post"><a class="nav-link" href="#" onClick="document.getElementById('GG').submit();">Add Project</a></form>
       </li>
-      <li class="nav-item active">
+<!--       <li class="nav-item active">
 		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
-      </li>
+      </li> -->
       <li class="nav-item active">
 		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 776px;">
   			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
@@ -130,10 +130,10 @@ $(document).ready( function () {
 	<script type="text/javascript">
 	function selectRow(radio) {
 	    var row = radio.parentNode.parentNode;
-	    var pcode = row.getElementsByTagName("th")[0].innerHTML;
-	    document.getElementById("fname").value = pcode+".pdf";
-	    document.getElementById("fname1").value = pcode+".pdf";
-	    document.getElementById("fname2").value = pcode+".pdf";
+	    var fn = row.getElementsByTagName("td")[4].innerHTML;
+	    document.getElementById("fname").value = fn;
+	    document.getElementById("fname1").value = fn;
+	    document.getElementById("fname2").value = fn;
 	    document.getElementById("ppcode1").value = pcode;
 	    document.getElementById("ppcode2").value = pcode;
 	    var rows = document.getElementById("myTable").getElementsByTagName("tr");

@@ -3,6 +3,7 @@ package com.servlet;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +27,8 @@ public class UpdateProject extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String uuid = request.getParameter("guid");
+		UUID guid = UUID.fromString(uuid);
 		String projectCode = request.getParameter("pcode");
 		String startDate = request.getParameter("pstart");
 		String endDate = request.getParameter("pend");
@@ -35,7 +38,7 @@ public class UpdateProject extends HttpServlet {
 		User u = (User) session.getAttribute("user");
 	
 		ProjectDao dao = new ProjectDao();
-	    dao.upProject(projectCode,startDate,endDate,projectType);
+	    dao.upProject(projectCode,startDate,endDate,projectType,guid);
 	    logger.info("User " + u.getUsername() + " updated project details of project code "+ projectCode);
     	response.sendRedirect("UserDashboard.jsp");
 	}

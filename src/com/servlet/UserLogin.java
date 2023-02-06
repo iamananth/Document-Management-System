@@ -2,7 +2,6 @@ package com.servlet;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 
 
 
@@ -38,7 +37,7 @@ public class UserLogin extends HttpServlet {
 		
 		if (user != null) {
 			if(userid == 144){
-				HttpSession session = request.getSession();
+				  HttpSession session = request.getSession();
 				  session.setAttribute("user", user);
 				  String pattern = "E, dd MMM yyyy HH:mm:ss z";
 				  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -47,19 +46,20 @@ public class UserLogin extends HttpServlet {
 				  logger.info("User " + user.getUsername() + " logged in successfully.");
 				  response.sendRedirect("AdminDashboard.jsp");
 			}else{
-			  HttpSession session = request.getSession();
-			  session.setAttribute("user", user);
-			  String pattern = "E, dd MMM yyyy HH:mm:ss z";
-			  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-			  String date = simpleDateFormat.format(new Date());
-			  session.setAttribute("loginTime", date);
-			  logger.info("User " + user.getUsername() + " logged in successfully.");
-			  response.sendRedirect("UserDashboard.jsp");
+				  HttpSession session = request.getSession();
+				  session.setAttribute("user", user);
+				  String pattern = "E, dd MMM yyyy HH:mm:ss z";
+				  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				  String date = simpleDateFormat.format(new Date());
+				  session.setAttribute("loginTime", date);
+				  logger.info("User " + user.getUsername() + " logged in successfully.");
+				  response.sendRedirect("UserDashboard.jsp");
 			}
-		} else {
-			  request.setAttribute("errorMessage", "Invalid username or password");
-			  request.getRequestDispatcher("UserLogin.jsp").forward(request, response);
-			}
+		}
+		if(user == null){
+			request.setAttribute("errorMessage", "Invalid user id or password.");
+			request.getRequestDispatcher("UserLogin.jsp").forward(request, response);
+		}
 	}
 
 }

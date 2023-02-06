@@ -1,6 +1,9 @@
 package com.pojo;
 
+import java.util.UUID;
+
 import javax.persistence.ManyToOne;
+
 
 
 
@@ -8,6 +11,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 public class ProjectDetails {
+	private UUID guid;
 	private String pcode;
 	private String startDate;
 	private String endDate;
@@ -18,6 +22,14 @@ public class ProjectDetails {
 	@Fetch(FetchMode.JOIN)
 	private User user;
 	
+	
+	
+	public UUID getGuid() {
+		return guid;
+	}
+	public void setGuid(UUID guid) {
+		this.guid = guid;
+	}
 	public String getPcode() {
 		return pcode;
 	}

@@ -6,9 +6,10 @@
 <hibernate-mapping>
    <class name ="com.pojo.ProjectDetails" table = "project_details">
       
-      <id name = "pcode" type = "string" column = "p_code">
-      </id>
-      
+     <id name="guid" type="java.util.UUID" column="GUID">
+    </id>
+ 
+      <property name = "pcode" type = "string" column = "p_code"/>
       <property name = "startDate" column = "p_start" type = "string"/>
       <property name = "endDate" column = "p_end" type = "string"/>
       <property name = "ptype" column = "p_type" type = "string"/>
