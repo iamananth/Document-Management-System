@@ -36,11 +36,16 @@ public class UpdateProject extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("user");
-	
+		int user_id = u.getId();
 		ProjectDao dao = new ProjectDao();
 	    dao.upProject(projectCode,startDate,endDate,projectType,guid);
 	    logger.info("User " + u.getUsername() + " updated project details of project code "+ projectCode);
-    	response.sendRedirect("UserDashboard.jsp");
+	    if(user_id == 144){
+	    	response.sendRedirect("AdminDashboard.jsp");
+	    }
+	    else{
+	    	response.sendRedirect("UserDashboard.jsp");
+	    }
 	}
 
 }
