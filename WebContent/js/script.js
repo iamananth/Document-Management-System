@@ -87,7 +87,7 @@ function sendHeartbeat() {
     setTimeout(sendHeartbeat, 5000);
 }
 
-sendHeartbeat();
+sendHeartbeat(); 
 
 function AddPro(){
 	document.getElementById("GG").submit();

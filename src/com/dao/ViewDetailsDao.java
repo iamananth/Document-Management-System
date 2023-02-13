@@ -56,7 +56,7 @@ public class ViewDetailsDao {
 		LocalDate date = java.time.LocalDate.now();
 		String cDate = date.toString();
 		
-		Query q = session.createQuery("FROM ProjectDetails WHERE user_id = :userid AND endDate < :cDate");
+		Query q = session.createQuery("FROM ProjectDetails WHERE user_id = :userid AND endDate <= :cDate");
 		q.setParameter("userid", user_id);
 		q.setParameter("cDate", cDate);
 		@SuppressWarnings("unchecked")
@@ -78,7 +78,7 @@ public class ViewDetailsDao {
 
 		String cDate = java.time.LocalDate.now().toString();
 		
-		Query q = session.createQuery("FROM ProjectDetails WHERE user_id = :userid AND endDate > :cDate");
+		Query q = session.createQuery("FROM ProjectDetails WHERE user_id = :userid AND endDate >= :cDate");
 		q.setParameter("userid", user_id);
 		q.setParameter("cDate", cDate);
 		@SuppressWarnings("unchecked")
@@ -90,5 +90,46 @@ public class ViewDetailsDao {
 		return details;
 	}
 	
+	public List<ProjectDetails> AllOngoing(){
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
+		  
+		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+		Session session = factory.openSession();  
+		Transaction t = session.beginTransaction();
+
+		String cDate = java.time.LocalDate.now().toString();
+		
+		@SuppressWarnings("rawtypes")
+		Query q = session.createQuery("FROM ProjectDetails WHERE endDate >= :cDate");
+		q.setParameter("cDate", cDate);
+		@SuppressWarnings("unchecked")
+		List<ProjectDetails> details = q.list();
+		
+		t.commit();
+		
+		return details;
+	}
+	
+	public List<ProjectDetails> AllArchived(){
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
+		  
+		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+		Session session = factory.openSession();  
+		Transaction t = session.beginTransaction();
+
+		String cDate = java.time.LocalDate.now().toString();
+		
+		@SuppressWarnings("rawtypes")
+		Query q = session.createQuery("FROM ProjectDetails WHERE endDate <= :cDate");
+		q.setParameter("cDate", cDate);
+		@SuppressWarnings("unchecked")
+		List<ProjectDetails> details = q.list();
+		
+		t.commit();
+		
+		return details;
+	}
 	
 }

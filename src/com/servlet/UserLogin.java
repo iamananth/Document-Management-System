@@ -34,11 +34,11 @@ public class UserLogin extends HttpServlet {
 		
 		LoginDao dao = new LoginDao();
 		User user = dao.login(userid, password);
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
 		
 		if (user != null) {
 			if(userid == 144){
-				  HttpSession session = request.getSession();
-				  session.setAttribute("user", user);
 				  String pattern = "E, dd MMM yyyy HH:mm:ss z";
 				  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 				  String date = simpleDateFormat.format(new Date());
@@ -46,8 +46,6 @@ public class UserLogin extends HttpServlet {
 				  logger.info("User " + user.getUsername() + " logged in successfully.");
 				  response.sendRedirect("AdminDashboard.jsp");
 			}else{
-				  HttpSession session = request.getSession();
-				  session.setAttribute("user", user);
 				  String pattern = "E, dd MMM yyyy HH:mm:ss z";
 				  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 				  String date = simpleDateFormat.format(new Date());

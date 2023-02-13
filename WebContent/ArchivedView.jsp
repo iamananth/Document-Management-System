@@ -94,7 +94,7 @@ $(document).ready( function () {
 <!-- 		</div> -->
 <!-- 	</div> -->
 	<div class="container-lg">
-	<h4>Ongoing Project Details</h4><br>
+	<h4>Archived Project Details</h4><br>
 <!-- 	<form action="UserLogout" method="post"><button class="btn btn-danger" style="margin-left: 937px; margin-top: -62px;">Logout</button></form> -->
 <!-- 	<a href="UserDashboard.jsp"><button class="btn btn-info" style="margin-left: 868px; margin-top: -111px;">Back</button></a> -->
 	<table class="table table-bordered table-sm" id="myTable">

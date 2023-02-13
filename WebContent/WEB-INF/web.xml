@@ -275,4 +275,24 @@
     <servlet-name>GuidGen</servlet-name>
     <url-pattern>/GuidGen</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AllOngoing</display-name>
+    <servlet-name>AllOngoing</servlet-name>
+    <servlet-class>com.servlet.AllOngoing</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllOngoing</servlet-name>
+    <url-pattern>/AllOngoing</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AllArchived</display-name>
+    <servlet-name>AllArchived</servlet-name>
+    <servlet-class>com.servlet.AllArchived</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllArchived</servlet-name>
+    <url-pattern>/AllArchived</url-pattern>
+  </servlet-mapping>
 </web-app>

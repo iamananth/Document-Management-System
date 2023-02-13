@@ -112,25 +112,35 @@
 			Welcome, <c:out value="${user.username}" /> <br>Last login: ${loginTime}
 		</div>
 <!-- 		<form action="UserLogout" method="post"><button class="btn btn-danger" style="margin-left: 937px; margin-top: -62px;">Logout</button></form> -->
- 		<div class="card text-bg-dark mb-3">
-		<h5 class="card-header">Manage Users</h5>
-  			<div class="card-body">
-    			<h5 class="card-title">Add Users</h5>
-    			<form action="AddUser.jsp"><input type="submit" class="btn" id="btn-yellow" value="Add" /></form>
-  			</div>
-  			<div class="card-body">
-    			<h5 class="card-title">View Users</h5>
-<!--     			<p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-    			<form action="UserDetails" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
-  			</div>
-		</div><br>
-		<div class="card text-bg-dark mb-3">
-		<h5 class="card-header">Manage Projects</h5>
-  			<div class="card-body">
-    			<h5 class="card-title">All Projects</h5>
-    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
-  			</div>
-		</div><br>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card text-bg-dark mb-3">
+    <h5 class="card-header">Manage Users</h5>
+      <div class="card-body">
+        <h5 class="card-title">Add Users</h5>
+		<form action="AddUser.jsp"><input type="submit" class="btn" id="btn-yellow" value="Add" /></form>
+      </div>
+      <div class="card-body">
+    	<h5 class="card-title">View Users</h5>
+    	<form action="UserDetails" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
+  	 </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card text-bg-dark mb-3">
+      <div class="card-body">
+        <h5 class="card-title">All Projects</h5>
+        <form action="ViewProjectUser" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
+        <br>
+        <h5 class="card-title">Ongoing Projects</h5>
+    	<form action="AllOngoing" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
+    	<br>
+    	<h5 class="card-title">Archived Projects</h5>
+    	<form action="AllArchived" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- 		<div class="card"> -->
 <!--   			<div class="card-body"> -->
 <!--     			<h5 class="card-title">Project Document Upload</h5> -->
