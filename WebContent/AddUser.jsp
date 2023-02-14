@@ -67,7 +67,7 @@
     		<div class="col">
       			<div class="form-outline">
       				<label class="form-label" for="uname">Username</label>
-       				<input type="text" name="uname" id="uname" class="form-control" />
+      				<input type="text" name="uname" id="uname" class="form-control" />
       			</div>
     	   </div>
   		</div>
@@ -82,10 +82,12 @@
   		<div class="form-outline">
   			<label class="form-label" for="pass">Password</label>
     		<input type="password" name="pass" id="pass" class="form-control" />
+    		<input type="checkbox" onclick="showPass()"> Show
     	</div><br>
     	<div class="form-outline">
   			<label class="form-label" for="repass">Retype Password</label>
     		<input type="password" name="repass" id="repass" class="form-control" />
+    		<input type="checkbox" onclick="showRePass()"> Show
     	</div>
     	<br>
     	<button type="reset" class="btn" id="btn-yellow">Reset</button>

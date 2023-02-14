@@ -128,19 +128,25 @@
   </div>
   <div class="col-sm-6">
     <div class="card text-bg-dark mb-3">
+     <h5 class="card-header">Manage Projects</h5>
       <div class="card-body">
-        <h5 class="card-title">All Projects</h5>
-        <form action="ViewProjectUser" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
-        <br>
         <h5 class="card-title">Ongoing Projects</h5>
     	<form action="AllOngoing" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
-    	<br>
+      </div>
+      <div class="card-body">
     	<h5 class="card-title">Archived Projects</h5>
     	<form action="AllArchived" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
       </div>
     </div>
   </div>
 </div>
+<div class="card text-bg-dark mb-3">
+  			<div class="card-body">
+    			<h5 class="card-title">All Projects</h5>
+    			<%-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--%>
+    			<form action="ViewProjectUser" method="get"><button type="submit" class="btn" id="btn-yellow">View</button></form>
+  			</div>
+</div><br>
 <!-- 		<div class="card"> -->
 <!--   			<div class="card-body"> -->
 <!--     			<h5 class="card-title">Project Document Upload</h5> -->

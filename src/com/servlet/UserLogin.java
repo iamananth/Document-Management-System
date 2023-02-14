@@ -44,6 +44,8 @@ public class UserLogin extends HttpServlet {
 				  String date = simpleDateFormat.format(new Date());
 				  session.setAttribute("loginTime", date);
 				  logger.info("User " + user.getUsername() + " logged in successfully.");
+				  FilePick fp = new FilePick();
+	  			  fp.start();
 				  response.sendRedirect("AdminDashboard.jsp");
 			}else{
 				  String pattern = "E, dd MMM yyyy HH:mm:ss z";
@@ -51,6 +53,8 @@ public class UserLogin extends HttpServlet {
 				  String date = simpleDateFormat.format(new Date());
 				  session.setAttribute("loginTime", date);
 				  logger.info("User " + user.getUsername() + " logged in successfully.");
+				  FilePick fp = new FilePick();
+	  			  fp.start();
 				  response.sendRedirect("UserDashboard.jsp");
 			}
 		}

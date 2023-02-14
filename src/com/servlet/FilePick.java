@@ -23,17 +23,12 @@ public class FilePick extends Thread {
 		for (File file : listofFiles) {
 			if (file.exists()) {
 				String name = file.getName();
-				String pcode = FilenameUtils.removeExtension(name);
 				logger.info(name);
 				boolean status = fdao.chkFile(name);
 				if(!status){
 					logger.info(name + " is not saved");
-					try {
-						st = fdao.FileUp(pcode, name);
-						logger.info(name + " is saved");
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
+					st = fdao.inFile(name);
+					logger.info(name + " is saved");
 				}else{
 					logger.info("All Files are saved");
 				}

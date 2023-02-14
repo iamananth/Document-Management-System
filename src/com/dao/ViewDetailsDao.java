@@ -56,6 +56,7 @@ public class ViewDetailsDao {
 		LocalDate date = java.time.LocalDate.now();
 		String cDate = date.toString();
 		
+		@SuppressWarnings("rawtypes")
 		Query q = session.createQuery("FROM ProjectDetails WHERE user_id = :userid AND endDate <= :cDate");
 		q.setParameter("userid", user_id);
 		q.setParameter("cDate", cDate);
@@ -78,6 +79,7 @@ public class ViewDetailsDao {
 
 		String cDate = java.time.LocalDate.now().toString();
 		
+		@SuppressWarnings("rawtypes")
 		Query q = session.createQuery("FROM ProjectDetails WHERE user_id = :userid AND endDate >= :cDate");
 		q.setParameter("userid", user_id);
 		q.setParameter("cDate", cDate);

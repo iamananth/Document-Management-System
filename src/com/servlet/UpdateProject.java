@@ -1,8 +1,6 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.dao.ProjectDao;
-import com.pojo.ProjectDetails;
 import com.pojo.User;
 
 /**

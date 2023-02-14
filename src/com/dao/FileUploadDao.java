@@ -21,6 +21,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import com.pojo.Filenames;
 import com.pojo.ProjectDetails;
 
 public class FileUploadDao {
@@ -68,6 +69,29 @@ public class FileUploadDao {
 		
 		return status;
 	}
+
+	public boolean inFile(String fileName){
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build(); 
+		
+		boolean st;
+		  
+		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+		Session session = factory.openSession();  
+		Transaction t = session.beginTransaction();
+		
+		Filenames f = new Filenames();
+		f.setFileName(fileName);
+		
+		session.save(f);
+		st = true;
+		
+		t.commit();
+		session.close();
+		
+		return st;
+		
+	}
 	public boolean chkFile(String fileName){
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build(); 
@@ -78,12 +102,15 @@ public class FileUploadDao {
 		Session session = factory.openSession();  
 		Transaction t = session.beginTransaction();
 		
-		ProjectDetails p = (ProjectDetails) session.get(ProjectDetails.class, fileName);
-		if (p != null) {
-		    st = true;
-		} else {
-		    st = false;
+		Query query = session.createQuery("SELECT COUNT(*) FROM Filenames WHERE fileName = :fname");
+		query.setParameter("fname", fileName);
+		Long count = (long) query.getFirstResult();
+		if(count > 0){
+			st = false;
+		}else{
+			st = true;
 		}
+		
 		
 		t.commit();
 		session.close();

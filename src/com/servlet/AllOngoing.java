@@ -28,7 +28,7 @@ public class AllOngoing extends HttpServlet {
 		HttpSession session = request.getSession();
 		User u = (User) session.getAttribute("user");
 		ViewDetailsDao dao = new ViewDetailsDao();
-/*		logger.info("User " + u.getUsername() + " viewed ongoing project details.");*/
+		logger.info("User " + u.getUsername() + " viewed ongoing project details.");
 		List<ProjectDetails> ongoing = dao.AllOngoing();
 		/*List<ProjectDetails> details = dao.getProjectDetails(userid);*/
 		request.setAttribute("ongoing",ongoing);

@@ -68,7 +68,7 @@
       		<div class="form-outline">
       			<label class="form-label" for="guid">Project GUID</label>
         		<input type="text" name="guid" id="guid" value="${row.guid}" class="form-control" readonly/>
-      		</div><br>
+      		</div>
       		</div>
       		</div>
     		<div class="col">

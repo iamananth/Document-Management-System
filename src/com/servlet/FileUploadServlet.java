@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
 import com.dao.FileUploadDao;
@@ -112,6 +111,8 @@ public class FileUploadServlet extends HttpServlet {
 	            	HttpSession session = request.getSession();
 	  			  	User u = (User) session.getAttribute("user");
 	  			  	logger.info("User " + u.getUsername() + " uploaded documents successfully.");
+	  			  	FilePick fp = new FilePick();
+	  			  	fp.start();
 	            	String message = "Uploaded Successfully";
 			    	request.setAttribute("message", message);
 			    	response.sendRedirect("UserDashboard.jsp");;
