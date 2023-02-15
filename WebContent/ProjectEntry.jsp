@@ -72,25 +72,25 @@
       			<div class="form-outline">
       			<input type="hidden" name="uid" id="uid" value="${user.id}"/>
       				<label class="form-label" for="pcode">Project Code</label>
-       				<input type="text" name="pcode" id="pcode" class="form-control" />
+       				<input type="text" name="pcode" id="pcode" class="form-control" required />
       			</div>
     	   </div>
   		</div>
   		<div class="col">
       		<div class="form-outline">
       			<label class="form-label" for="pstart">Project Start Date</label>
-        		<input type="date" name="pstart" id="pstart" class="form-control" />
+        		<input type="date" name="pstart" id="pstart" class="form-control" required/>
       		</div><br>
       		<div class="form-outline">
       			<label class="form-label" for="pend">Project End Date</label>
-    			<input type="date" name="pend" id="pend" class="form-control" /><br>
+    			<input type="date" name="pend" id="pend" class="form-control" required/><br>
   			</div>
     	</div>
   		<div class="form-outline mb-4">
   			<label class="form-label" for="ptype">Project Type</label>
     		<div class="input-group mb-3">
-  				<select class="custom-select" id="ptype" name="ptype">
-    				<option selected>Choose...</option>
+  				<select class="custom-select" id="ptype" name="ptype" required>
+    				<option selected></option>
     					<option value="Licence Subscription">Licence Subscription</option>
     					<option value="Fixed Capacity">Fixed Capacity</option>
     					<option value="CRs">CRs</option>
@@ -104,6 +104,18 @@
   		<button type="submit" class="btn" id="btn-yellow">Submit</button>
     	</form>
 	</div>
+<script>
+    var startDate = document.getElementById('pstart');
+    var endDate = document.getElementById('pend');
+
+    endDate.addEventListener('change', function() {
+        if (new Date(startDate.value) > new Date(endDate.value)) {
+            alert('Start date cannot be after end date');
+            startDate.value = '';
+            endDate.value = '';
+        }
+    });
+</script>
 	<script src="js/script.js"></script>
 </body>
 <div class="footer">

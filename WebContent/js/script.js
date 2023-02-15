@@ -100,3 +100,12 @@ sendHeartbeat();
 function AddPro(){
 	document.getElementById("GG").submit();
 }
+
+function dateCheck(){
+	var startDate = document.getElementsById("pstart");
+	var endDate = document.getElementsById("pend");
+	
+	if(endDate <= startDate){
+		alert("Start Date cannot exceed End Date");
+	}
+}

@@ -44,9 +44,12 @@
       <li class="nav-item active">
         <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
       </li>
-      <li class="nav-item active">
-        <form id="GG" action="GuidGen" method="post"><a class="nav-link" href="#" onClick="document.getElementById('GG').submit();">Add Project</a></form>
-      </li>
+        <form id="GG" action="GuidGen" method="post">
+        	<li class="nav-item active">
+        		<a class="nav-link" href="#" onClick="document.getElementById('GG').submit();">Add Project</a>
+        	</li>
+        </form>
+      
 <!--       <li class="nav-item active">
 		<a class="nav-link" href="FileUpload.jsp">Upload Documents</a>
       </li> -->

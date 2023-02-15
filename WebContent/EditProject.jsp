@@ -41,20 +41,22 @@
       <li class="nav-item active">
         <a class="nav-link" href="UserDashboard.jsp">User Dashboard</a>
       </li>
+      <form id="GG" action="GuidGen" method="post">
+        	<li class="nav-item active">
+        		<a class="nav-link" href="#" onClick="document.getElementById('GG').submit();">Add Project</a>
+        	</li>
+        </form>
       <li class="nav-item active">
-        <form id="GG" action="GuidGen" method="post"><a class="nav-link" href="#" onClick="document.getElementById('GG').submit();">Add Project</a></form>
-      </li>
-      <li class="nav-item active">
-		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 776px;">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 960px;">
   			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
   			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" style="margin-left: 335px;"></path>
 		</svg>
       </li>
       <li class="nav-item active">
-		<a class="nav-link" style="position: relative;left: 771px;">${user.username}</a>
+		<a class="nav-link" style="position: relative;left: 953px;">${user.username}</a>
       </li>
       <li class="nav-item active">
-        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 783px;">Logout</button></form>
+        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 963px;">Logout</button></form>
       </li>
     </ul>
   </div>
@@ -75,23 +77,23 @@
       			<div class="form-outline">
       			<input type="hidden" name="uid" id="uid" value="${user.username}"/>
       				<label class="form-label" for="pcode">Project Code</label>
-       				<input type="text" name="pcode" id="pcode" value="${row.pcode}" class="form-control" />
+       				<input type="text" name="pcode" id="pcode" value="${row.pcode}" class="form-control" required/>
       			</div>
     	   </div>
   		<div class="col">
       		<div class="form-outline">
       			<label class="form-label" for="pstart">Project Start Date</label>
-        		<input type="date" name="pstart" id="pstart" value="${row.startDate}" class="form-control" />
+        		<input type="date" name="pstart" id="pstart" value="${row.startDate}" class="form-control" required/>
       		</div><br>
       		<div class="form-outline">
       			<label class="form-label" for="pend">Project End Date</label>
-    			<input type="date" name="pend" id="pend" value="${row.endDate}" class="form-control" /><br>
+    			<input type="date" name="pend" id="pend" value="${row.endDate}" class="form-control" required/><br>
   			</div>
     	</div>
   		<div class="form-outline mb-4">
   			<label class="form-label" for="ptype">Project Type</label>
     		<div class="input-group mb-3">
-  				<select class="custom-select" id="ptype" name="ptype">
+  				<select class="custom-select" id="ptype" name="ptype" required>
     				<option selected>${row.ptype}</option>
     					<option value="Licence Subscription">Licence Subscription</option>
     					<option value="Fixed Capacity">Fixed Capacity</option>
@@ -107,6 +109,18 @@
   		</c:forEach>
     	</form>
 	</div>
+	<script>
+    var startDate = document.getElementById('pstart');
+    var endDate = document.getElementById('pend');
+
+    endDate.addEventListener('change', function() {
+        if (new Date(startDate.value) > new Date(endDate.value)) {
+            alert('Start date cannot be after end date');
+            startDate.value = '';
+            endDate.value = '';
+        }
+    });
+</script>
 	<script src="js/script.js"></script>
 </body>
 <div class="footer">

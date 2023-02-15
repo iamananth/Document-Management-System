@@ -75,28 +75,40 @@
       			<div class="form-outline">
       			<input type="hidden" name="uid" id="uid" value="${user.username}"/>
       				<label class="form-label" for="pcode">Project Code</label>
-       				<input type="text" name="pcode" id="pcode" value="${row.pcode}" class="form-control" />
+       				<input type="text" name="pcode" id="pcode" value="${row.pcode}" class="form-control" required/>
       			</div>
     	   </div>
   		<div class="col">
       		<div class="form-outline">
       			<label class="form-label" for="pstart">Project Start Date</label>
-        		<input type="date" name="pstart" id="pstart" value="${row.startDate}" class="form-control" />
+        		<input type="date" name="pstart" id="pstart" value="${row.startDate}" class="form-control" required/>
       		</div><br>
       		<div class="form-outline">
       			<label class="form-label" for="pend">Project End Date</label>
-    			<input type="date" name="pend" id="pend" value="${row.endDate}" class="form-control" /><br>
+    			<input type="date" name="pend" id="pend" value="${row.endDate}" class="form-control" required/><br>
   			</div>
     	</div>
   		<div class="form-outline mb-4">
   			<label class="form-label" for="ptype">Project Type</label>
-    		<input type="text" name="ptype" id="ptype" value="${row.ptype}" class="form-control" />
+    		<input type="text" name="ptype" id="ptype" value="${row.ptype}" class="form-control" required/>
     	</div>
     	<button type="reset" class="btn btn-secondary">Reset</button>
   		<button type="submit" class="btn" id="btn-yellow">Submit</button>
   		</c:forEach>
     	</form>
 	</div>
+	<script>
+    var startDate = document.getElementById('pstart');
+    var endDate = document.getElementById('pend');
+
+    endDate.addEventListener('change', function() {
+        if (new Date(startDate.value) > new Date(endDate.value)) {
+            alert('Start date cannot be after end date');
+            startDate.value = '';
+            endDate.value = '';
+        }
+    });
+</script>
 	<script src="js/script.js"></script>
 </body>
 <div class="footer">
