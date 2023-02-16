@@ -37,7 +37,7 @@ $(document).ready( function () {
 
 			}
 	%>
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+<nav id="navbar" class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="UserDashboard.jsp">DMS</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -130,6 +130,24 @@ $(document).ready( function () {
 <form action="EditProject" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="guid1" name="guid1" /><button type="submit" class="btn btn-success" style="margin-left: 177px;margin-top: -77px;">Edit</button></form>
 <form action="DeleteProjectServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname2" name="fname" /><input type="hidden" id="guid2" name="guid"/><button type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new" style="margin-left: 240px;margin-top: -94px;">Delete</button></form>
 </div>
+	<script type="text/javascript">
+	window.onscroll = function() {myFunction()};
+
+	// Get the navbar
+	var navbar = document.getElementById("navbar");
+
+	// Get the offset position of the navbar
+	var sticky = navbar.offsetTop;
+
+	// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+	function myFunction() {
+	  if (window.pageYOffset >= sticky) {
+	    navbar.classList.add("sticky");
+	  } else {
+	    navbar.classList.remove("sticky");
+	  }
+	}
+	</script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
 	function selectRow(radio) {

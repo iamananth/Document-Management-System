@@ -26,7 +26,12 @@
 	type="text/javascript"></script>
 </head>
 <body>
-	<h1 class="text-bg-dark p-3">Document Management System</h1>
+<nav id="navbar" class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">DMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
 	<img class="logo" src="images/logo.png">
 	<form action="UserLogin" onSubmit="return login()" method="post">
 		<div class="form-container">
