@@ -26,9 +26,14 @@
 	type="text/javascript"></script>
 </head>
 <body>
-	<h1 class="text-bg-primary p-3">Document Management System</h1>
-	<img class="logo" src="images/logo.jpg">
-	<form action="UserLogin" method="post">
+<nav id="navbar" class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">DMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+	<img class="logo" src="images/logo.png">
+	<form action="UserLogin" onSubmit="return login()" method="post">
 		<div class="form-container">
 		<%
 			String errorMessage = (String) request.getAttribute("errorMessage");
@@ -38,7 +43,7 @@
   		<div class="alert alert-danger" role="alert">
     		<%= errorMessage %>
   		</div>
-  		
+
 		<%
   			}
 		%>
@@ -49,16 +54,20 @@
 			<br>
 			<label>Enter your Password</label>
 			<input class="form-control form-control-sm" type="password" name="password" id="pass" placeholder="Enter password" >
+			<input type="checkbox" onclick="showPass()"> Show Password
 			<br>
 			<div class="text-center">
-			<a href="ForgotPassword.jsp">Forgot Password?</a>
+			<a href="ForgotPassword.jsp" style="color: #b9a246;">Forgot Password?</a>
 			<br><br>
-			<input class="btn btn-primary" type="submit" onClick="login()" value="Login">
+			<input class="btn" id="btn-yellow" type="submit" value="Login">
 			<br><br>
-			<a href="UserRegister.jsp">New User? Register Here!</a>
+<!-- 			<a href="UserRegister.jsp" style="color: #b9a246;">New User? Register Here!</a> -->
 			</div>
 		</div>
 	</form>
 	<script src="js/script.js"></script>
 </body>
+<div class="footer">
+  <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
+</div>
 </html>

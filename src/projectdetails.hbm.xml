@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name ="com.pojo.ProjectDetails" table = "project_details">
+      
+     <id name="guid" type="java.util.UUID" column="GUID">
+    </id>
+ 
+      <property name = "pcode" type = "string" column = "p_code"/>
+      <property name = "startDate" column = "p_start" type = "string"/>
+      <property name = "endDate" column = "p_end" type = "string"/>
+      <property name = "ptype" column = "p_type" type = "string"/>
+      <property name = "fileName" column = "file_name" type = "string"/>
+      
+      <many-to-one name="user" class="com.pojo.User">
+			<column name="user_id" not-null="true"></column>
+		</many-to-one>
+         
+   </class>
+
+</hibernate-mapping>

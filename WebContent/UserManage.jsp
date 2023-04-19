@@ -81,4 +81,7 @@
 		</div>
 	</div>
 </body>
+<div class="footer">
+  <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
+</div>
 </html>

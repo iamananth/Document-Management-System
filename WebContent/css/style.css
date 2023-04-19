@@ -25,3 +25,51 @@ h1 {
 .container-lg{
 	margin-top:20px;
 }
+
+.selected {
+  background-color: #b9a246;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #b9a246;
+  color: white;
+  text-align: center;
+}
+
+#btn-yellow{
+	background-color: #b9a246;
+	color: white;
+}
+
+#text-yellow{
+	color: #b9a246;
+}
+/* nav{ */
+/*   font-size: 14px; */
+/* } */
+
+.btn-link{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    color: #0000EE;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#navbar{
+	top: 0;
+	width: 100%;
+	position: fixed;
+	z-index: 1000;
+}
+body {
+  padding-top: 70px; /* adjust the value to match the height of the navbar */
+}

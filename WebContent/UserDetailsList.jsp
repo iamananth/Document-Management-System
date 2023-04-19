@@ -13,112 +13,98 @@
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
-<link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-	type="text/javascript"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-	type="text/javascript"></script>
+	<script src="js/Heartbeat.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-	<h1 class="text-bg-primary p-3">Document Management System</h1>
-	<div class="container-lg">
-		<div class="table-wrapper">
-			<div class="table-title">
-				<div class="row">
-					<div class="col-sm-8">
-						<h2>User Details</h2>
-					</div>
-				</div>
-			</div>
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Department</th>
-						<th>Phone Number</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-				<c:forEach items="${users}" var="row">
-					<tr>
-						<td>${row.id}</td>
-						<td>${row.username}</td>
-						<td>${row.department}</td>
-						<td>${row.phone_number}</td>
-						<td>
-							<div class="row">
-   								<div class="col-xs-6 text-center">
-       								<button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-info btn-md center-block" Style="width: 100px;">Edit</button><br>
-       							</div>
-       							<div class="col-xs-6 text-center">
-       								<form><button type="submit" class="btn btn-danger btn-md center-block" Style="width: 100px;">Delete</button></form>
-     							</div>
-							</div>
-						</td>
-					</tr>
-				</c:forEach>
-				</tbody>
-			</table>
-			<%--Edit Modal --%>
-			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  				<div class="modal-dialog modal-dialog-centered" role="document">
-    				<div class="modal-content">
-      					<div class="modal-header">
-        					<h5 class="modal-title" id="exampleModalLongTitle">Edit User</h5>
-        						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          							<span aria-hidden="true">&times;</span>
-        						</button>
-      					</div>
-      					<div class="modal-body">
-        					<%
-								String id = request.getParameter("id");
-								String sql = "SELECT * FROM users WHERE id = ?";
-								Class.forName("oracle.jdbc.driver.OracleDriver");  
-					        	Connection connection=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","root"); 
-								PreparedStatement statement = connection.prepareStatement(sql);
-								statement.setString(1, id);
-								ResultSet result = statement.executeQuery();
+<nav id="navbar" class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="UserDashboard.jsp">DMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-								if (result.next()) {
-									String name = result.getString("username");
-									String pass = result.getString("password");
-									String dept = result.getString("department");
-									String ph = result.getString("phone_number");
-							%>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="AdminDashboard.jsp">Admin Dashboard</a>
+      </li>
+<!--       <li class="nav-item active"> -->
+<!--         <a class="nav-link" href="UserManage.jsp">Manage Users</a> -->
+<!--       </li> -->
+<!--       <li class="nav-item active"> -->
+<!-- 		<a class="nav-link" href="FileUpload.jsp">View Users</a> -->
+<!--       </li> -->
+<li class="nav-item active">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-circle" height="35" width="35" viewBox="0 0 20 12" style="position: relative;left: 1075px;">
+  			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+  			<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" style="margin-left: 335px;"></path>
+		</svg>
+      </li>
+      <li class="nav-item active">
+		<a class="nav-link" style="position: relative;left: 1075px;">${user.username}</a>
+      </li>
+      <li class="nav-item active">
+        <form action="UserLogout" method="post"><button class="btn btn-danger my-2 my-sm-0" style="margin-left: 1090px;">Logout</button></form>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container-lg">
+<h5>User Details</h5>
+<form action="EditUser" method="get"><input type="hidden" id="id" name="id" /><button type="submit" class="btn btn-success">Edit</button></form>
+<form action="DeleteUser" method="get"><input type="hidden" id="id1" name="id1" /><button style="margin-left: 61px;margin-top: -38px;" type="submit" onclick="return confirm('Are you sure you want to delete? This Cannot be undone.')" class="btn btn-danger add-new">Delete</button></form><br>
+<table class="table table-bordered table-sm" id="myTable">
+  <thead>
+    <tr>
+      <th></th>
+      <th scope="col">User ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Department</th>
+      <th scope="col">Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${users}" var="row">
+    <tr>
+    <td><input type="radio" id="radioButton" onclick="selectRow(this)" name="choice" /></td>
+	 <th id="userid" scope="row">${row.id}</th>
+      <td id="uname">${row.username}</td>
+      <td id="dept">${row.department}</td>
+      <td id="ph">${row.phone_number}</td>
+    </tr>
+    </c:forEach>
+  </tbody>
+</table>
+<!-- <form action="DownloadServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname" name="fname" /><button type="submit" class="btn btn-info">Download</button></form><br> -->
+<!-- <form action="ViewPdfServlet" method="get" style="height: 0px;margin-bottom: 9px;"><input type="hidden" id="fname1" name="fname" /><button type="submit" class="btn btn-warning" style="margin-left: 107px;margin-top: -59px;">View</button></form> -->
 
-  							<form>
-    							<input class="form-control form-control-sm" type="hidden" name="id" value="<%= id %>">
-    							<label>User Name</label> 
-								<input class="form-control form-control-sm" type="text" name="uname" id="uname" value="<%= name %>"> <br> 
-								<label>Password</label> 
-								<input class="form-control form-control-sm" type="password" name="pass" id="pass" value="<%= pass %>"> <br> 
-								<label>Department</label>
-								<input class="form-control form-control-sm" type="text" name="dept" id="dept" value="<%= dept %>"><br>
-								<label>Phone Number</label>
-								<input class="form-control form-control-sm" type="text" name="ph" id="ph" value="<%= ph %>"><br>
-  							
-						<%
-  							}
-						%>
-      							<div class="modal-footer">
-        							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        							<button type="button" class="btn btn-primary">Save changes</button>
-      							</div>
-      					</form>
-    				</div>
-  				</div>
-			</div>
-		</div>
-	</div>
+</div>
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+	<script src="js/script.js"></script>
+	<script type="text/javascript">
+	function selectRow(radio) {
+	    var row = radio.parentNode.parentNode;
+	    var id = row.getElementsByTagName("th")[0].innerHTML;
+	    document.getElementById("id").value = id;
+	    document.getElementById("id1").value = id;
+	    var rows = document.getElementById("myTable").getElementsByTagName("tr");
+	    
+	    for (var i = 0; i < rows.length; i++) {
+	      rows[i].classList.remove("selected");
+	    }
+	    row.classList.add("selected");
+	  }
+	</script>
 </body>
+<br><br><br>
+<div class="footer">
+  <p style="text-align: center;">Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
+</div>
 </html>

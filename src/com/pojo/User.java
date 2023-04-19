@@ -1,11 +1,35 @@
 package com.pojo;
 
+import java.util.Set;
+
 public class User {
 	int id;
 	String username;
 	String password;
 	String department;
 	String phone_number;
+	private Set<ProjectDetails> projectdetails;
+	
+	
+	public User() {
+		super();
+	}
+	
+	public User(int id) {
+		super();
+		this.id = id;
+	}
+
+	public User(int id, String username, String password, String department,
+			String phone_number) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.department = department;
+		this.phone_number = phone_number;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -36,6 +60,15 @@ public class User {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
+
+	public Set<ProjectDetails> getProjectdetails() {
+		return projectdetails;
+	}
+
+	public void setProjectdetails(Set<ProjectDetails> projectdetails) {
+		this.projectdetails = projectdetails;
+	}
+	
 	
 	
 }

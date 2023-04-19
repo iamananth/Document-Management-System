@@ -1,12 +1,19 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+
+
+
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 
 import com.dao.LoginDao;
 import com.pojo.User;
@@ -16,6 +23,8 @@ import com.pojo.User;
  */
 public class UserLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	static final Logger logger = Logger.getLogger(UserLogin.class);
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -23,18 +32,36 @@ public class UserLogin extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		
-		
 		LoginDao dao = new LoginDao();
-		User user = dao.getUser(userid, password);
+		User user = dao.login(userid, password);
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
 		
 		if (user != null) {
-			  HttpSession session = request.getSession();
-			  session.setAttribute("user", user);
-			  response.sendRedirect("UserDashboard.jsp");
-			} else {
-			  request.setAttribute("errorMessage", "Invalid username or password");
-			  request.getRequestDispatcher("UserLogin.jsp").forward(request, response);
+			if(userid == 144){
+				  String pattern = "E, dd MMM yyyy HH:mm:ss z";
+				  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				  String date = simpleDateFormat.format(new Date());
+				  session.setAttribute("loginTime", date);
+				  logger.info("User " + user.getUsername() + " logged in successfully.");
+/*				  FilePick fp = new FilePick();
+	  			  fp.start();*/
+				  response.sendRedirect("AdminDashboard.jsp");
+			}else{
+				  String pattern = "E, dd MMM yyyy HH:mm:ss z";
+				  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+				  String date = simpleDateFormat.format(new Date());
+				  session.setAttribute("loginTime", date);
+				  logger.info("User " + user.getUsername() + " logged in successfully.");
+/*				  FilePick fp = new FilePick();
+	  			  fp.start();*/
+				  response.sendRedirect("UserDashboard.jsp");
 			}
+		}
+		if(user == null){
+			request.setAttribute("errorMessage", "Invalid user id or password.");
+			request.getRequestDispatcher("UserLogin.jsp").forward(request, response);
+		}
 	}
 
 }
